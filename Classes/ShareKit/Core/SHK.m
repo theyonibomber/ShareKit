@@ -761,7 +761,7 @@ NSString* SHKLocalizedStringFormat(NSString* key)
 {
   static NSBundle* bundle = nil;
   if (nil == bundle) {
-    NSString* path = [[[NSBundle mainBundle] resourcePath]
+    NSString* path = [[[NSBundle bundleForClass:[SHK class]] resourcePath]
                       stringByAppendingPathComponent:@"ShareKit.bundle"];
     bundle = [[NSBundle bundleWithPath:path] retain];
   }
