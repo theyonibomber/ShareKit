@@ -23,17 +23,17 @@
 @implementation SHKFormControllerLargeTextField
 
 @synthesize delegate, textView, maxTextLength;
-@synthesize counter, hasLink, image, imageTextLength;
+@synthesize counter, hasLink, image, video, imageTextLength;
 @synthesize text;
 
 - (void)dealloc 
 {
 	[textView release];
-	[counter release];
+    [counter release];
 	[text release];
 	[image release];
-	
-	[super dealloc];
+	[video release];
+    [super dealloc];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil delegate:(id <SHKFormControllerLargeTextFieldDelegate>)aDelegate
@@ -186,12 +186,18 @@
     NSInteger countNumber = 0;
     
     if (self.maxTextLength) {
-        countNumber = (self.image?(self.maxTextLength - self.imageTextLength):self.maxTextLength) - self.textView.text.length;
+        countNumber = (self.image||self.video?(self.maxTextLength - self.imageTextLength):self.maxTextLength) - self.textView.text.length;
         count = [NSString stringWithFormat:@"%i", countNumber];
     } else {
         count = @"";
     }
-    counter.text = [NSString stringWithFormat:@"%@%@", self.image ? [NSString stringWithFormat:@"Image %@ ",countNumber>0?@"+":@""]:@"", count];
+	
+    if (self.image) {
+		counter.text = [NSString stringWithFormat:@"%@%i", self.image ? [NSString stringWithFormat:@"Image %@ ",countNumber>0?@"+":@""]:@"", count];
+	}
+	else if (self.video) {
+		counter.text = [NSString stringWithFormat:@"%@%i", self.video ? [NSString stringWithFormat:@"Video %@ ",countNumber>0?@"+":@""]:@"", count];
+	}
  	
 	if (countNumber >= 0) {
 		
