@@ -142,7 +142,7 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 #pragma mark -
 
 - (BOOL)twitterFrameworkAvailable {
-    if ([SHKCONFIG(forcePreIOS5TwitterAccess) boolValue] || [SHKCONFIG(twitterSupportVideo) boolValue]))
+    if ([SHKCONFIG(forcePreIOS5TwitterAccess) boolValue] || [SHKCONFIG(twitterSupportVideo) boolValue])
     {
         return NO;
     }
