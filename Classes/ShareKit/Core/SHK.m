@@ -343,7 +343,12 @@ BOOL SHKinit;
 			case SHKShareTypeFile:
 				favoriteSharers = SHKCONFIG(defaultFavoriteFileSharers);
 				break;
-			
+
+            case SHKShareTypeVideo:
+                favoriteSharers = [NSArray arrayWithObjects:@"SHKPhotoAlbum", @"SHKMail", @"SHKFacebook",@"SHKTwitter",
+                                                            nil];
+                break;
+
 			default:
 				favoriteSharers = [NSArray array];
 		}
