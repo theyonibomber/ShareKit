@@ -415,10 +415,9 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
   [self sendDidStart];
 }
 
-- (void)request:(FBRequest *)request didLoad:(id)result
+- (void)request:(FBRequest *)fbRequest didLoad:(id)result
 {   
-    if ([result objectForKey:@"username"]){
-        
+    if ([fbRequest.url hasSuffix:@"/me"] && [result objectForKey:@"id"]) {
         [result convertNSNullsToEmptyStrings];
         [[NSUserDefaults standardUserDefaults] setObject:result forKey:kSHKFacebookUserInfo];
     }     
@@ -430,7 +429,8 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
 - (void)request:(FBRequest*)aRequest didFailWithError:(NSError*)error 
 {
     //if user revoked app permissions
-    if (error.domain == @"facebookErrDomain" && error.code == 10000) {
+    NSNumber *fbErrorCode = [[error.userInfo valueForKey:@"error"] valueForKey:@"code"];
+    if (error.domain == @"facebookErrDomain" && [fbErrorCode intValue] == 190) {
         [self shouldReloginWithPendingAction:SHKPendingSend];
     } else {
         [self sendDidFailWithError:error];
