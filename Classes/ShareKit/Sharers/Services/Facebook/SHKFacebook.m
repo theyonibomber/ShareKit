@@ -249,6 +249,14 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
 		NSString *pictureURI = [item customValueForKey:@"picture"];
 		if (pictureURI)
 			[params setObject:pictureURI forKey:@"picture"];
+
+        // TODO: maybe only if shouldAutoShare is YES?
+        [[SHKFacebook facebook] requestWithGraphPath:@"me/feed"
+                                           andParams:params
+                                       andHttpMethod:@"POST"
+                                         andDelegate:self];
+        [self retain]; //must retain, because FBConnect does not retain its delegates. Released in callback.
+        return YES;
 	}
 	else if (item.shareType == SHKShareTypeText && item.text)
 	{
