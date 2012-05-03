@@ -285,11 +285,11 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
 		return YES;
 	}
 	else if (item.shareType == SHKShareTypeVideo)
-	{	
-		if (item.title) 
-			[params setObject:item.title forKey:@"caption"];
-		if (item.text) 
-			[params setObject:item.text forKey:@"message"];
+	{
+		if (item.title)
+			[params setObject:item.title forKey:@"title"];
+		if (item.text)
+			[params setObject:item.text forKey:@"description"];
 		[params setObject:item.data forKey:item.filename];
 		[params setObject:item.mimeType forKey:@"contentType"];
 		
