@@ -1,3 +1,10 @@
+this is a private fork for ShareKit that is used for developing JoyTunes apps.
+
+My changes includes:
+- minor bugfixes or behavioral changes that suits our apps
+- merge and improvement of sneakygoose's fork - video sharing
+- merge of icyleaf's fork - chinese network integration
+
 ShareKit 2.0
 ============
 

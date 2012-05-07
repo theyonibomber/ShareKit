@@ -40,6 +40,83 @@
  leaving that decision up to the user.
  */
 
+// Sina Weibo 
+- (NSString*)sinaWeiboConsumerKey {
+	return @"1631351849";
+}
+
+- (NSString*)sinaWeiboConsumerSecret {
+	return @"9164c304b4e547b8cdbf024fc4534720";
+}
+
+// You need to set this if using OAuth (MUST be set, it could be any words)
+- (NSString*)sinaWeiboCallbackUrl {
+	return @"http://icyleaf.com";
+}
+
+// To use xAuth, set to 1
+- (NSNumber*)sinaWeiboUseXAuth {
+	return [NSNumber numberWithInt:0];
+}
+
+// Enter your sina weibo screen name (Only for xAuth)
+- (NSString*)sinaWeiboScreenname {
+	return @"icyleaf";
+}
+
+//Enter your app's sina weibo account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+- (NSString*)sinaWeiboUserID {
+	return @"1708250715";
+}
+
+// NetEase Weibo
+- (NSString*)netEaseWeiboConsumerKey
+{
+    return @"FP4aD8G9cEFNZEBv";
+}
+
+- (NSString*)netEaseWeiboConsumerSecret
+{
+    return @"ZohrmWOBEnVC16jNWIEliXytq62f6xDh";
+}
+
+// You need to set this if using OAuth (MUST be set "null")
+- (NSString*)netEaseWeiboCallbackUrl
+{
+    return @"null";
+}
+
+// To use xAuth, set to 1
+- (NSNumber*)netEaseWeiboUseXAuth
+{
+    return [NSNumber numberWithInt:0];
+}
+
+// Enter your sina weibo screen name (Only for xAuth)
+- (NSString*)netEaseaWeiboScreenname
+{
+    return @"icyleaf";
+}
+
+//Enter your app's sina weibo account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+- (NSString*)netEaseWeiboUserID
+{
+    return @"";
+}
+
+// Douban
+- (NSString*)doubanConsumerKey {
+	return @"035c8265fdb968b10a158731f92c3a13";
+}
+
+- (NSString*)doubanConsumerSecret {
+	return @"bd44db472be8bf16";
+}
+
+// You need to set this if using OAuth (MUST be set, it could be any words)
+- (NSString*)doubanCallbackUrl {
+	return @"http://icyleaf.com";
+}
 
 // Vkontakte
 // SHKVkontakteAppID is the Application ID provided by Vkontakte
@@ -212,5 +289,6 @@
     
     return nil;
 }
+
 
 @end

@@ -59,6 +59,86 @@
  leaving that decision up to the user.
  */
 
+// Sina Weibo 
+- (NSString*)sinaWeiboConsumerKey {
+	return @"";
+}
+
+- (NSString*)sinaWeiboConsumerSecret {
+	return @"";
+}
+
+// You need to set this if using OAuth (MUST be set, it could be any words)
+- (NSString*)sinaWeiboCallbackUrl {
+	return @"";
+}
+
+// To use xAuth, set to 1
+- (NSNumber*)sinaWeiboUseXAuth {
+	return [NSNumber numberWithInt:0];
+}
+
+// Enter your sina weibo screen name (Only for xAuth)
+- (NSString*)sinaWeiboScreenname {
+	return @"";
+}
+
+//Enter your app's sina weibo account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+- (NSString*)sinaWeiboUserID {
+	return @"";
+}
+
+// NetEase Weibo
+- (NSString*)netEaseWeiboConsumerKey
+{
+    return @"";
+}
+
+- (NSString*)netEaseWeiboConsumerSecret
+{
+    return @"";
+}
+
+// You need to set this if using OAuth (MUST be set "null")
+- (NSString*)netEaseWeiboCallbackUrl
+{
+    return @"null";
+}
+
+// To use xAuth, set to 1
+- (NSNumber*)netEaseWeiboUseXAuth
+{
+    return [NSNumber numberWithInt:0];
+}
+
+// Enter your sina weibo screen name (Only for xAuth)
+- (NSString*)netEaseaWeiboScreenname
+{
+    return @"";
+}
+
+//Enter your app's sina weibo account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+- (NSString*)netEaseWeiboUserID
+{
+    return @"";
+}
+
+
+// Douban 
+- (NSString*)doubanConsumerKey {
+	return @"";
+}
+
+- (NSString*)doubanConsumerSecret {
+	return @"";
+}
+
+// You need to set this if using OAuth (MUST be set, it could be any words)
+- (NSString*)doubanCallbackUrl {
+	return @"";
+}
+
+
 // Vkontakte
 // SHKVkontakteAppID is the Application ID provided by Vkontakte
 - (NSString*)vkontakteAppId {
