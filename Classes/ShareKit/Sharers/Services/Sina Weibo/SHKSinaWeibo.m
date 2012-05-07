@@ -100,7 +100,7 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 
 + (BOOL)canGetUserInfo
 {
-	return YES;
+	return NO;
 }
 
 #pragma mark -
@@ -397,8 +397,8 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 			[self sendImage];
 			break;
 			
-		case SHKShareTypeUserInfo:            
-			[self sendUserInfo];
+		case SHKShareTypeUserInfo:
+//			[self sendUserInfo];
 			break;
 			
 		default:

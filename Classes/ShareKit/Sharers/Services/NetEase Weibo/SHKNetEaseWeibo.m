@@ -96,7 +96,7 @@ static NSString *const kSHKNetEaseWeiboUserInfo = @"kSHKNetEaseWeiboUserInfo";
 
 + (BOOL)canGetUserInfo
 {
-	return YES;
+	return NO;
 }
 
 #pragma mark -
@@ -378,6 +378,11 @@ static NSString *const kSHKNetEaseWeiboUserInfo = @"kSHKNetEaseWeiboUserInfo";
 	}
 	
 	return result;
+}
+
+- (void)handleUnsuccessfulTicket:(NSData *)data {
+    // Yoni: added for it to compile... not sure what to do here...
+    SHKLog(@"SHKNetEaseWeibo handleUnsuccessfulTicket: called");
 }
 
 - (BOOL)send

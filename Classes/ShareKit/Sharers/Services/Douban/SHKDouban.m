@@ -86,7 +86,7 @@ static NSString *const kSHKDoubanUserInfo = @"kSHKDoubanUserInfo";
 
 + (BOOL)canGetUserInfo
 {
-	return YES;
+	return NO;
 }
 
 #pragma mark -
@@ -237,7 +237,7 @@ static NSString *const kSHKDoubanUserInfo = @"kSHKDoubanUserInfo";
 	if (isValid && status.length <= 140) {
 		result = YES;
 	}
-	
+
 	return result;
 }
 
@@ -248,9 +248,9 @@ static NSString *const kSHKDoubanUserInfo = @"kSHKDoubanUserInfo";
 	
     switch (item.shareType) 
     {
-//		case SHKShareTypeUserInfo:            
+		case SHKShareTypeUserInfo:
 //			[self sendUserInfo];
-//			break;
+			break;
 //			
 		default:
 			[self sendStatus];
