@@ -59,7 +59,7 @@
  leaving that decision up to the user.
  */
 
-// Sina Weibo 
+// Sina Weibo - http://open.weibo.com/
 - (NSString*)sinaWeiboConsumerKey {
 	return @"";
 }
@@ -88,7 +88,8 @@
 	return @"";
 }
 
-// NetEase Weibo
+
+// NetEase Weibo - http://open.t.163.com/
 - (NSString*)netEaseWeiboConsumerKey
 {
     return @"";
@@ -111,20 +112,37 @@
     return [NSNumber numberWithInt:0];
 }
 
-// Enter your sina weibo screen name (Only for xAuth)
+// Enter your netease weibo screen name (Only for xAuth)
 - (NSString*)netEaseaWeiboScreenname
 {
     return @"";
 }
 
-//Enter your app's sina weibo account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+//Enter your app's netease weibo account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
 - (NSString*)netEaseWeiboUserID
 {
     return @"";
 }
 
 
-// Douban 
+// Tencent Weibo - http://open.t.qq.com/
+- (NSString*)tencentWeiboConsumerKey
+{
+    return @"";
+}
+
+- (NSString*)tencentWeiboConsumerSecret
+{
+    return @"";
+}
+
+- (NSString*)tencentWeiboCallbackUrl
+{
+    return @"";
+}
+
+
+// Douban - http://www.douban.com/service/apidoc/
 - (NSString*)doubanConsumerKey {
 	return @"";
 }
@@ -136,6 +154,41 @@
 // You need to set this if using OAuth (MUST be set, it could be any words)
 - (NSString*)doubanCallbackUrl {
 	return @"";
+}
+
+
+// RenRen - http://dev.renren.com/
+- (NSString*)renrenAppId
+{
+    return @"";
+}
+
+- (NSString*)renrenConsumerKey
+{
+    return @"";
+}
+
+- (NSString*)renrenConsumerSecret
+{
+    return @"";
+}
+
+
+// Plurk - http://www.plurk.com/API
+- (NSString*)plurkConsumerKey
+{
+    return @"";
+}
+
+- (NSString*)plurkConsumerSecret
+{
+    return @"";
+}
+
+// You need to set this if using OAuth (Dont forget set it during create app on web)
+- (NSString*)plurkCallbackUrl
+{
+    return @"";
 }
 
 

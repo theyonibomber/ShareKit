@@ -104,6 +104,24 @@
     return @"";
 }
 
+
+// Tencent Weibo
+- (NSString*)tencentWeiboConsumerKey
+{
+    return @"801065801";
+}
+
+- (NSString*)tencentWeiboConsumerSecret
+{
+    return @"f33650da32c7b1f335311d0c1bd9a6f2";
+}
+
+- (NSString*)tencentWeiboCallbackUrl
+{
+    return @"null";
+}
+
+
 // Douban
 - (NSString*)doubanConsumerKey {
 	return @"035c8265fdb968b10a158731f92c3a13";
@@ -117,6 +135,41 @@
 - (NSString*)doubanCallbackUrl {
 	return @"http://icyleaf.com";
 }
+
+
+// RenRen
+- (NSString*)renrenAppId
+{
+    return @"134180";
+}
+
+- (NSString*)renrenConsumerKey
+{
+    return @"ff5fe131651842c7adbdc061f676dc88";
+}
+
+- (NSString*)renrenConsumerSecret
+{
+    return @"41d17695626d4c43b3572ce7f923b8a3";
+}
+
+
+// Plurk
+- (NSString*)plurkConsumerKey
+{
+    return @"Vfh091HVf15O";
+}
+
+- (NSString*)plurkConsumerSecret
+{
+    return @"mFX8ntsPL2p2Dz17jwKWs8PU7eDHDaR9";
+}
+
+- (NSString*)plurkCallbackUrl
+{
+    return @"http://icyleaf.com";
+}
+
 
 // Vkontakte
 // SHKVkontakteAppID is the Application ID provided by Vkontakte
@@ -272,6 +325,24 @@
     return @"app://foursquare";
 }
 
+
+/*
+ Favorite Sharers
+ ----------------
+ These values are used to define the default favorite sharers appearing on ShareKit's action sheet.
+ */
+- (NSArray*)defaultFavoriteURLSharers {
+    return [NSArray arrayWithObjects:@"SHKDouban",@"SHKSinaWeibo",@"SHKNetEaseWeibo", nil];
+}
+- (NSArray*)defaultFavoriteImageSharers {
+    return [NSArray arrayWithObjects:@"SHKSinaWeibo",@"SHKNetEaseWeibo", nil];
+}
+- (NSArray*)defaultFavoriteTextSharers {
+    return [NSArray arrayWithObjects:@"SHKMail",@"SHKDouban",@"SHKSinaWeibo",@"SHKNetEaseWeibo", nil];
+}
+- (NSArray*)defaultFavoriteFileSharers {
+    return [NSArray arrayWithObjects:@"SHKMail",@"SHKEvernote", nil];
+}
 
 /*
  UI Configuration : Basic
