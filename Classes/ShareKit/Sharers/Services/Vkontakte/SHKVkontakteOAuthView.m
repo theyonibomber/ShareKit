@@ -27,6 +27,14 @@
 #import "SHKVkontakteOAuthView.h"
 #import "SHKVkontakte.h"
 
+
+@interface SHKVkontakteOAuthView()
+
+- (void)cancel;
+
+@end
+
+
 @implementation SHKVkontakteOAuthView
 @synthesize vkWebView, appID, delegate;
 
@@ -48,7 +56,12 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	
+
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc]
+                                               initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                    target:self
+                                                                    action:@selector(cancel)] autorelease];
+
 	if(!vkWebView)
 	{
 		self.vkWebView = [[[UIWebView alloc] initWithFrame:self.view.bounds] autorelease];
@@ -157,6 +170,10 @@
 		}
 	}
 	return nil;
+}
+
+- (void)cancel {
+    [[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
 }
 
 @end
