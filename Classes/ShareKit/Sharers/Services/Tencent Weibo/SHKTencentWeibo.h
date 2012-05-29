@@ -50,4 +50,8 @@
 - (void)sendImageTicket:(OAServiceTicket *)ticket finishedWithData:(NSMutableData *)data;
 - (void)sendImageTicket:(OAServiceTicket *)ticket failedWithError:(NSError *)error;
 
+- (void)sendUserInfo;
+- (void)sendUserInfo:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
+- (void)sendUserInfo:(OAServiceTicket *)ticket didFailWithError:(NSError *)error;
+
 @end

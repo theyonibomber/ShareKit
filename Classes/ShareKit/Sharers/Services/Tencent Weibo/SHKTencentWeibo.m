@@ -90,6 +90,10 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 	return YES;
 }
 
++ (BOOL)canGetUserInfo
+{
+    return YES;
+}
 
 #pragma mark -
 #pragma mark Configuration : Dynamic Enable
@@ -292,7 +296,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 			break;
 			
 		case SHKShareTypeUserInfo:            
-            //			[self sendUserInfo];
+            [self sendUserInfo];
 			break;
 			
 		default:
@@ -474,6 +478,62 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 	[self sendDidFailWithError:error];
 }
 
+- (void)sendUserInfo
+{
+    NSURL *url = [NSURL URLWithString:@"http://open.t.qq.com/api/user/info?format=json"];
+
+	TencentOAMutableURLRequest *oRequest = [[TencentOAMutableURLRequest alloc] initWithURL:url
+                                                                                  consumer:consumer
+                                                                                     token:accessToken
+                                                                                     realm:nil
+                                                                         signatureProvider:signatureProvider];
+	[oRequest setHTTPMethod:@"GET"];
+    OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
+                                                                                          delegate:self
+                                                                                 didFinishSelector:@selector(sendUserInfo:didFinishWithData:)
+                                                                                   didFailSelector:@selector(sendUserInfo:didFailWithError:)];
+	[fetcher start];
+	[oRequest release];
+}
+
+- (void)sendUserInfo:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data
+{
+	if (ticket.didSucceed) {
+
+		NSError *error = nil;
+		NSMutableDictionary *userInfo;
+		Class serializator = NSClassFromString(@"NSJSONSerialization");
+		if (serializator) {
+			userInfo = [serializator JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+		} else {
+			userInfo = [[JSONDecoder decoder] mutableObjectWithData:data error:&error];
+		}
+
+		if (error) {
+			SHKLog(@"Error when parsing json TencentWeibo user info request:%@", [error description]);
+		}
+
+        userInfo = [NSMutableDictionary dictionaryWithDictionary:[userInfo objectForKey:@"data"]];
+
+        // tweetinfo is an array and not a dictionary, so convertNSNullsToEmptyStrings doesn't work for it
+        // currently we just ignore it, as it's not essential user info
+        [userInfo removeObjectForKey:@"tweetinfo"];
+
+        [userInfo convertNSNullsToEmptyStrings];
+		[[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:kSHKTencentWeiboUserInfo];
+
+        [self sendDidFinish];
+
+	} else {
+
+		[self handleUnsuccessfulTicket:data];
+	}
+}
+
+- (void)sendUserInfo:(OAServiceTicket *)ticket didFailWithError:(NSError*)error
+{
+	[self sendDidFailWithError:error];
+}
 
 #pragma mark -
 
