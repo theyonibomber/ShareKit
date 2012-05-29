@@ -31,6 +31,8 @@
 #import "SHKConfiguration.h"
 #import "NSMutableDictionary+NSNullsToEmptyStrings.h"
 
+static NSString *const kSHKRenRenUserInfo = @"kSHKRenRenUserInfo";
+
 @implementation SHKRenRen
 @synthesize renren = _renren;
 
@@ -81,12 +83,18 @@ static SHKRenRen *sharedRenRen = nil;
 	return YES;
 }
 
++ (BOOL)canGetUserInfo
+{
+    return YES;
+}
+
+
 #pragma mark -
 #pragma mark Configuration : Dynamic Enable
 
 - (BOOL)shouldAutoShare
 {
-	return NO;
+	return item.shareType == SHKShareTypeUserInfo;
 }
 
 
@@ -194,7 +202,7 @@ static SHKRenRen *sharedRenRen = nil;
 }	
 
 - (BOOL)send
-{	
+{
 	if ( ! [self validateItemAfterUserEdit])
 		return NO;
 	
@@ -203,7 +211,17 @@ static SHKRenRen *sharedRenRen = nil;
 		if (item.shareType == SHKShareTypeImage) 
         {
 			[self showRenRenPublishPhotoDialog];
-		} 
+		}
+        else if (item.shareType == SHKShareTypeUserInfo)
+        {
+            ROUserInfoRequestParam *param = [[ROUserInfoRequestParam alloc] init];
+            [_renren getUsersInfo:param andDelegate:self];
+
+            // make sure we don't die before response arrives
+            [self retain];
+
+            [param release];
+        }
         else 
         {
 			NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:10];
@@ -217,32 +235,52 @@ static SHKRenRen *sharedRenRen = nil;
 		
 		return YES;
 	}
-	
-	return NO;
 }
 
 #pragma mark - RenrenDelegate methods
 
 -(void)renrenDidLogin:(Renren *)renren
 {
+    [self authDidFinish:YES];
     [self show];
 }
 
 - (void)renren:(Renren *)renren loginFailWithError:(ROError*)error
 {
-	[self sendDidFailWithError:error];
+    [self authDidFinish:NO];
 }
 
 - (void)renren:(Renren *)renren requestDidReturnResponse:(ROResponse*)response
 {
-	NSDictionary* params = (NSDictionary *)response.rootObject;
-    if (params != nil && [params objectForKey:@"result"] != nil && [[params objectForKey:@"result"] intValue] == 1) 
+    // user info
+    if ([response.rootObject isKindOfClass:[NSArray class]])
     {
+        if ([(NSArray *)response.rootObject count] == 0)
+        {
+            [self sendDidFailWithError:nil];
+            return;
+        }
+        ROUserResponseItem *responseItem = [(NSArray *)response.rootObject objectAtIndex:0];
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:[responseItem responseDictionary]];
+        [userInfo convertNSNullsToEmptyStrings];
+
+        [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:kSHKRenRenUserInfo];
         [self sendDidFinish];
-	}
+
+        // see [self send]
+        [self release];
+    }
     else
-    {  
-        [self sendDidFailWithError:[SHK error:SHKLocalizedString([params objectForKey:@"error_msg"])]];
+    {
+        NSDictionary* params = (NSDictionary *)response.rootObject;
+        if (params != nil && [params objectForKey:@"result"] != nil && [[params objectForKey:@"result"] intValue] == 1)
+        {
+            [self sendDidFinish];
+        }
+        else
+        {
+            [self sendDidFailWithError:[SHK error:SHKLocalizedString([params objectForKey:@"error_msg"])]];
+        }
     }
 }
 
