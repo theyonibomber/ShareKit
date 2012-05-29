@@ -34,6 +34,7 @@
 
 #define API_DOMAIN  @"http://api.t.sina.com.cn"
 
+static NSString *const kSHKSinaWeiboUserID = @"kSHKSinaWeiboUserID";
 static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 
 @interface SHKSinaWeibo ()
@@ -43,6 +44,7 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 - (void)shortenURLFinished:(SHKRequest *)aRequest;
 - (BOOL)validateItemAfterUserEdit;
 - (void)handleUnsuccessfulTicket:(NSData *)data;
+- (void)extractUserIDFromOauthResponse:(NSString *)response;
 
 @end
 
@@ -74,6 +76,10 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 	return self;
 }
 
+- (NSString *)userID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kSHKSinaWeiboUserID];
+}
 
 #pragma mark -
 #pragma mark Configuration : Service Defination
@@ -100,7 +106,7 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 
 + (BOOL)canGetUserInfo
 {
-	return NO;
+	return YES;
 }
 
 #pragma mark -
@@ -225,9 +231,13 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
     }
 }
 
-- (void)tokenAccessTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data 
+- (void)tokenAccessTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data
 {
-	if (xAuth) 
+    NSString *response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+
+    [self extractUserIDFromOauthResponse:response];
+
+    if (xAuth)
 	{
 		if (ticket.didSucceed)
 		{
@@ -237,8 +247,6 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 		
 		else
 		{
-			NSString *response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-			
 			SHKLog(@"tokenAccessTicket Response Body: %@", response);
 			
 			[self tokenAccessTicket:ticket didFailWithError:[SHK error:response]];
@@ -398,7 +406,7 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 			break;
 			
 		case SHKShareTypeUserInfo:
-//			[self sendUserInfo];
+			[self sendUserInfo];
 			break;
 			
 		default:
@@ -571,6 +579,58 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 	[self sendDidFailWithError:error];
 }
 
+- (void)sendUserInfo {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/show.json?source=%@&user_id=%@",
+                                                                 API_DOMAIN,
+                                                                 SHKCONFIG(sinaWeiboConsumerKey),
+                                                                 self.userID]];
+
+	OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:url
+                                                                    consumer:consumer
+                                                                       token:accessToken
+                                                                       realm:nil
+                                                           signatureProvider:nil];
+	[oRequest setHTTPMethod:@"GET"];
+    OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
+                                                                                          delegate:self
+                                                                                 didFinishSelector:@selector(sendUserInfo:didFinishWithData:)
+                                                                                   didFailSelector:@selector(sendUserInfo:didFailWithError:)];
+	[fetcher start];
+	[oRequest release];
+}
+
+- (void)sendUserInfo:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data
+{
+	if (ticket.didSucceed) {
+
+		NSError *error = nil;
+		NSMutableDictionary *userInfo;
+		Class serializator = NSClassFromString(@"NSJSONSerialization");
+		if (serializator) {
+			userInfo = [serializator JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+		} else {
+			userInfo = [[JSONDecoder decoder] mutableObjectWithData:data error:&error];
+		}
+
+		if (error) {
+			SHKLog(@"Error when parsing json SinaWeibo user info request:%@", [error description]);
+		}
+
+		[userInfo convertNSNullsToEmptyStrings];
+		[[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:kSHKSinaWeiboUserInfo];
+
+		[self sendDidFinish];
+
+	} else {
+
+		[self handleUnsuccessfulTicket:data];
+	}
+}
+
+- (void)sendUserInfo:(OAServiceTicket *)ticket didFailWithError:(NSError*)error
+{
+	[self sendDidFailWithError:error];
+}
 
 - (void)followMe
 {
@@ -592,6 +652,18 @@ static NSString *const kSHKSinaWeiboUserInfo = @"kSHKSinaWeiboUserInfo";
 	
 	[fetcher start];
 	[oRequest release];
+}
+
+- (void)extractUserIDFromOauthResponse:(NSString *)response
+{
+    for (NSString *component in [response componentsSeparatedByString:@"&"]) {
+        NSArray *splittedByEqualSign = [component componentsSeparatedByString:@"="];
+        if ([[splittedByEqualSign objectAtIndex:0] isEqualToString:@"user_id"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:[splittedByEqualSign lastObject] forKey:kSHKSinaWeiboUserID];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            return;
+        }
+    }
 }
 
 @end
