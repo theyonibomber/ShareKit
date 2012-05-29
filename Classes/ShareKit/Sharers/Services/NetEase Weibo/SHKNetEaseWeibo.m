@@ -96,7 +96,7 @@ static NSString *const kSHKNetEaseWeiboUserInfo = @"kSHKNetEaseWeiboUserInfo";
 
 + (BOOL)canGetUserInfo
 {
-	return NO;
+	return YES;
 }
 
 #pragma mark -
@@ -225,7 +225,7 @@ static NSString *const kSHKNetEaseWeiboUserInfo = @"kSHKNetEaseWeiboUserInfo";
 
 - (void)tokenAccessTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data 
 {
-	if (xAuth) 
+	if (xAuth)
 	{
 		if (ticket.didSucceed)
 		{
@@ -236,7 +236,7 @@ static NSString *const kSHKNetEaseWeiboUserInfo = @"kSHKNetEaseWeiboUserInfo";
 		else
 		{
 			NSString *response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-			
+
 			SHKLog(@"tokenAccessTicket Response Body: %@", response);
 			
 			[self tokenAccessTicket:ticket didFailWithError:[SHK error:response]];
@@ -401,7 +401,7 @@ static NSString *const kSHKNetEaseWeiboUserInfo = @"kSHKNetEaseWeiboUserInfo";
 			break;
 			
 		case SHKShareTypeUserInfo:            
-//			[self sendUserInfo];
+			[self sendUserInfo];
 			break;
 			
 		default:
@@ -570,6 +570,54 @@ static NSString *const kSHKNetEaseWeiboUserInfo = @"kSHKNetEaseWeiboUserInfo";
 	[self sendDidFailWithError:error];
 }
 
+- (void)sendUserInfo {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/users/show.json", API_DOMAIN]];
+    OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:url
+                                                                    consumer:consumer
+                                                                       token:accessToken
+                                                                       realm:nil
+                                                           signatureProvider:nil];
+	[oRequest setHTTPMethod:@"GET"];
+    OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
+                                                                                          delegate:self
+                                                                                 didFinishSelector:@selector(sendUserInfo:didFinishWithData:)
+                                                                                   didFailSelector:@selector(sendUserInfo:didFailWithError:)];
+	[fetcher start];
+	[oRequest release];
+}
+
+- (void)sendUserInfo:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data
+{
+	if (ticket.didSucceed) {
+
+		NSError *error = nil;
+		NSMutableDictionary *userInfo;
+		Class serializator = NSClassFromString(@"NSJSONSerialization");
+		if (serializator) {
+			userInfo = [serializator JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+		} else {
+			userInfo = [[JSONDecoder decoder] mutableObjectWithData:data error:&error];
+		}
+
+		if (error) {
+			SHKLog(@"Error when parsing json NetEaseWeibo user info request:%@", [error description]);
+		}
+
+		[userInfo convertNSNullsToEmptyStrings];
+		[[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:kSHKNetEaseWeiboUserInfo];
+
+		[self sendDidFinish];
+
+	} else {
+
+		[self handleUnsuccessfulTicket:data];
+	}
+}
+
+- (void)sendUserInfo:(OAServiceTicket *)ticket didFailWithError:(NSError*)error
+{
+	[self sendDidFailWithError:error];
+}
 
 - (void)followMe
 {
