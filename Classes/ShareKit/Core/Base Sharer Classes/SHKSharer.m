@@ -304,6 +304,7 @@
     // Create controller and set share options
 	SHKSharer *controller = [[self alloc] init];
 	controller.item.shareType = SHKShareTypeUserInfo;
+    controller.quiet = YES;
     
 	// share and/or show UI
 	[controller share];
