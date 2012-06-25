@@ -28,11 +28,11 @@
 #import "SHKViewControllerWrapper.h"
 
 
-@implementation SHKViewControllerWrapper
+    @implementation SHKViewControllerWrapper
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
-    return YES;
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 @end

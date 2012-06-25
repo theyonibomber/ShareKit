@@ -160,7 +160,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
 {
-    return YES;
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 - (void)cancel
