@@ -193,10 +193,10 @@
     }
 	
     if (self.image) {
-		counter.text = [NSString stringWithFormat:@"%@%i", self.image ? [NSString stringWithFormat:@"Image %@ ",countNumber>0?@"+":@""]:@"", count];
+		counter.text = [NSString stringWithFormat:@"%@%@", self.image ? [NSString stringWithFormat:@"Image %@ ",countNumber>0?@"+":@""]:@"", count];
 	}
 	else if (self.video) {
-		counter.text = [NSString stringWithFormat:@"%@%i", self.video ? [NSString stringWithFormat:@"Video %@ ",countNumber>0?@"+":@""]:@"", count];
+		counter.text = [NSString stringWithFormat:@"%@%@", self.video ? [NSString stringWithFormat:@"Video %@ ",countNumber>0?@"+":@""]:@"", count];
 	}
  	
 	if (countNumber >= 0) {

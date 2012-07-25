@@ -88,7 +88,7 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
 	if (![fileManager fileExistsAtPath:imagePath]) 
 		[fileManager createDirectoryAtPath:imagePath withIntermediateDirectories:YES attributes:nil error:nil];
 	
-  NSString *uid = [NSString stringWithFormat:@"img-%i-%i", [[NSDate date] timeIntervalSince1970], arc4random()];    
+  NSString *uid = [NSString stringWithFormat:@"img-%f-%i", [[NSDate date] timeIntervalSince1970], arc4random()];
   // store image in cache
   NSData *imageData = UIImagePNGRepresentation(image);
   imagePath = [imagePath stringByAppendingPathComponent:uid];
@@ -108,7 +108,7 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
 	if (![fileManager fileExistsAtPath:videoPath]) 
 		[fileManager createDirectoryAtPath:videoPath withIntermediateDirectories:YES attributes:nil error:nil];
 	
-	NSString *uid = [NSString stringWithFormat:@"video-%i-%i", [[NSDate date] timeIntervalSince1970], arc4random()];    
+	NSString *uid = [NSString stringWithFormat:@"video-%f-%i", [[NSDate date] timeIntervalSince1970], arc4random()];
 	// store image in cache
 
 	videoPath = [videoPath stringByAppendingPathComponent:uid];
@@ -162,6 +162,10 @@ static NSString *const kSHKFacebookUserInfo =@"kSHKFacebookUserInfo";
 + (NSString *)sharerTitle
 {
 	return @"Facebook";
+}
+
+- (void)sendDidCancel {
+
 }
 
 + (BOOL)canShareURL
