@@ -11,7 +11,6 @@
 "Public" = "パブリック";
 "Caption" = "キャプション";
 "Title" = "タイトル";
-"Tags" = "タグ";
 "Close" = "閉じる";
 "Notes" = "ノート";
 "Note" = "ノート";
@@ -53,9 +52,9 @@
 
 "There was an error saving to Pinboard" = "Pinboardの保存にエラーが起きました";
 
-"Sorry, Instapaper did not accept your credentials. Please try again." = "Instapaperが認証情報を受理できませんでした。再試行してください";
-"Sorry, Instapaper encountered an error. Please try again." = "Instapaperエラーが発生しました。再試行してください";
-"There was a problem saving to Instapaper." = "Instapaperに保存中にエラーが発生しました。";
+"Sorry, %@ did not accept your credentials. Please try again." = "%@が認証情報を受理できませんでした。再試行してください";
+"Sorry, %@ encountered an error. Please try again." = "%@エラーが発生しました。再試行してください";
+"There was a problem saving to %@." = "%@に保存中にエラーが発生しました。";
 
 "Incorrect username and password" = "ユーザー名かパスワードが間違えています";
 "There was an error logging into Google Reader" = "Googleリーダーにログイン失敗しました";
@@ -100,11 +99,10 @@
 "There was a problem sharing with Evernote" = "Evernoteで共有中に問題が発生しました。";
 "Get" = "Get";
 "Description" = "解説";
-"Tag (space) Tag" = "タグ(スペース)タグ";
 "Is Public" = "すべて(公開)";
 "Is Friend" = "友達のみ";
 "Is Family" = "家族のみ";
 "Logged Out!" = "ログアウトしました!";
 "Sent from %@" = " %@から受信";
 "Save to Photo Album" = "アルバムに保存";
-"Tag,Tag" = "タグ,タグ";
+"Tag, tag" = "タグ,タグ";

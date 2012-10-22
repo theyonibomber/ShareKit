@@ -133,7 +133,8 @@
 
 - (void) authComplete 
 {
-    [self authDidFinish:YES];
+    [self authDidFinish: YES];
+
 	if (self.item) 
 		[self share];
 }
@@ -244,7 +245,7 @@
 	NSString *photo = [postDictionary objectForKey:@"photo"];
 	NSString *server = [postDictionary objectForKey:@"server"];
 
-	NSString *saveWallPhoto = [NSString stringWithFormat:@"https://api.vk.com/method/photos.saveWallPhoto?owner_id=%@&access_token=%@&server=%@&photo=%@&hash=%@", self.accessUserId, self.accessToken ,server, photo, hash];
+	NSString *saveWallPhoto = [NSString stringWithFormat:@"https://api.vk.com/method/photos.saveWallPhoto?owner_id=%@&access_token=%@&server=%@&photo=%@&hash=%@", self.accessUserId, self.accessToken ,server, [self URLEncodedString:photo], hash];
 	
 	NSDictionary *saveWallPhotoDict = [self sendRequest:saveWallPhoto withCaptcha:NO];
 	

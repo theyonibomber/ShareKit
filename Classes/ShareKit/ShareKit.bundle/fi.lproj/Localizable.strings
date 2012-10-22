@@ -11,7 +11,6 @@
 "Public" = "Julkinen";
 "Caption" = "Kuvateksti";
 "Title" = "Otsikko";
-"Tags" = "Tägit";
 "Close" = "Sulje";
 "Notes" = "Muistiinpanot";
 "Note" = "Muistiinpano";
@@ -53,9 +52,9 @@
 
 "There was an error saving to Pinboard" = "Virhe tallennettaessa Pinboard";
 
-"Sorry, Instapaper did not accept your credentials. Please try again." = "Väärä käyttäjätunnus tai salasana.";
-"Sorry, Instapaper encountered an error. Please try again." = "Virhe Instapaperissa. Yritä myöhemmin uudelleen.";
-"There was a problem saving to Instapaper." = "Ongelma tallennettaessa Instapaperiin.";
+"Sorry, %@ did not accept your credentials. Please try again." = "Väärä käyttäjätunnus tai salasana.";
+"Sorry, %@ encountered an error. Please try again." = "Virhe %@. Yritä myöhemmin uudelleen.";
+"There was a problem saving to %@." = "Ongelma tallennettaessa %@.";
 
 "Incorrect username and password" = "Väärä käyttäjätunnus tai salasana";
 "There was an error logging into Google Reader" = "Virhe kirjauduttaessa Google Readeriin";
@@ -98,11 +97,10 @@
 "There was a problem sharing with Evernote" = "Virhe jaettaessa palveluun Evernote";
 "Get" = "Hae";
 "Description" = "Kuvaus";
-"Tag (space) Tag" = "Tagi (space) Tagi";
 "Is Public" = "On julkinen";
 "Is Friend" = "On ystävä";
 "Is Family" = "On perhettä";
 "Logged Out!" = "Kirjauduttu ulos!";
 "Sent from %@" = "Lähetetty palvelusta %@";
 "Save to Photo Album" = "Tallenna Kuva-albumiin";
-"Tag,Tag" = "Tagi,Tagi";
+"Tag, tag" = "Tagi, tagi";

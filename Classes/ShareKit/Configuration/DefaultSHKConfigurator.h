@@ -90,8 +90,7 @@
 - (NSNumber*)twitterUseXAuth;
 - (NSString*)twitterUsername;
 - (NSNumber*)twitterSupportVideo;
-- (NSString*)evernoteUserStoreURL;
-- (NSString*)evernoteNetStoreURLBase;
+- (NSString*)evernoteHost;
 - (NSString*)evernoteConsumerKey;
 - (NSString*)evernoteSecret;
 - (NSString*)flickrConsumerKey;
@@ -108,12 +107,11 @@
 - (NSString*)foursquareV2ClientId;
 - (NSString*)foursquareV2RedirectURI;
 - (NSNumber*)shareMenuAlphabeticalOrder;
-- (NSNumber*)sharedWithSignature;
 - (NSString*)barStyle;
 - (UIColor*)barTintForView:(UIViewController*)vc;
 - (UIColor*)formFontColor;
 - (UIColor*)formBackgroundColor;
-- (NSString*)modalPresentationStyle;
+- (NSString*)modalPresentationStyleForController:(UIViewController *)controller;
 - (NSString*)modalTransitionStyle;
 - (NSNumber*)maxFavCount;
 - (NSNumber*)autoOrderFavoriteSharers;
@@ -123,6 +121,23 @@
 - (NSNumber*)showActionSheetMoreButton;
 - (NSNumber*)allowOffline;
 - (NSNumber*)allowAutoShare;
-- (NSNumber*)usePlaceholders;
+- (Class)SHKActionSheetSubclass;
+- (Class)SHKShareMenuSubclass;
+- (Class)SHKShareMenuCellSubclass;
+- (Class)SHKFormControllerSubclass;
 
+//SHKPrint
+- (NSNumber*)printOutputType;
+//SHKMail
+- (NSArray *)mailToRecipients;
+- (NSNumber*)isMailHTML;
+- (NSNumber*)mailJPGQuality;
+- (NSNumber*)sharedWithSignature;
+//SHKFacebook
+- (NSString *)facebookURLSharePictureURI;
+- (NSString *)facebookURLShareDescription;
+//SHKTextMessage
+- (NSArray *)textMessageToRecipients;
+//SHKInstagram and future others
+-(NSString*) popOverSourceRect;
 @end

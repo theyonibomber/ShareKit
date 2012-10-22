@@ -188,7 +188,7 @@
 		self.item = [[[SHKItem alloc] init] autorelease];
 				
 		if ([self respondsToSelector:@selector(modalPresentationStyle)])
-			self.modalPresentationStyle = [SHK modalPresentationStyle];
+			self.modalPresentationStyle = [SHK modalPresentationStyleForController:self];
 		
 		if ([self respondsToSelector:@selector(modalTransitionStyle)])
 			self.modalTransitionStyle = [SHK modalTransitionStyle];
@@ -397,7 +397,7 @@
 - (void)authorizationFormShow
 {	
 	// Create the form
-	SHKCustomFormController *form = [[SHKCustomFormController alloc] initWithStyle:UITableViewStyleGrouped title:SHKLocalizedString(@"Login") rightButtonTitle:SHKLocalizedString(@"Login")];
+	SHKFormController *form = [[SHKCONFIG(SHKFormControllerSubclass) alloc] initWithStyle:UITableViewStyleGrouped title:SHKLocalizedString(@"Login") rightButtonTitle:SHKLocalizedString(@"Login")];
 	[form addSection:[self authorizationFormFields] header:nil footer:[self authorizationFormCaption]];
 	form.delegate = self;
 	form.validateSelector = @selector(authorizationFormValidate:);
@@ -514,7 +514,7 @@
 	
 	else 
 	{	
-		SHKCustomFormController *rootView = [[SHKCustomFormController alloc] initWithStyle:UITableViewStyleGrouped 
+		SHKFormController *rootView = [[SHKCONFIG(SHKFormControllerSubclass) alloc] initWithStyle:UITableViewStyleGrouped 
 																		 title:nil
 															  rightButtonTitle:SHKLocalizedString(@"Send to %@", [[self class] sharerTitle])
 									   ];
@@ -555,7 +555,7 @@
 	return nil;
 }
 
-- (void)shareFormValidate:(SHKCustomFormController *)form
+- (void)shareFormValidate:(SHKFormController *)form
 {	
 	/*
 	 
@@ -603,6 +603,27 @@
 
 #pragma mark -
 
+-(NSString *)tagStringJoinedBy:(NSString *)joinString allowedCharacters:(NSCharacterSet *)charset tagPrefix:(NSString *)prefixString {
+    
+    NSMutableArray *cleanedTags = [NSMutableArray arrayWithCapacity:[self.item.tags count]];
+    
+    for (NSString *tag in self.item.tags) {
+        NSCharacterSet *removeSet = [charset invertedSet];
+        NSString *strippedTag = [[tag componentsSeparatedByCharactersInSet:removeSet]
+                                 componentsJoinedByString:@"" ];
+        if ([strippedTag length] < 1) continue;
+        strippedTag = [strippedTag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        if ([strippedTag length] < 1) continue;
+        if ([prefixString length] > 0) [cleanedTags addObject:[NSString stringWithFormat:@"%@%@", prefixString, strippedTag]];
+            else [cleanedTags addObject:strippedTag];
+    }
+    
+    if ([cleanedTags count] < 1) return @"";
+    return [cleanedTags componentsJoinedByString:joinString];
+}
+
+#pragma mark -
+
 - (void)updateItemWithForm:(SHKFormController *)form
 {
 	// Update item with new values from form
@@ -615,8 +636,15 @@
 		else if ([key isEqualToString:@"text"])
 			item.text = [formValues objectForKey:key];
 		
-		else if ([key isEqualToString:@"tags"])
-			item.tags = [formValues objectForKey:key];
+		else if ([key isEqualToString:@"tags"]) {
+            NSString *unparsedTags = [formValues objectForKey:key];
+            NSArray *tmpValues = [unparsedTags componentsSeparatedByString:@","];
+            NSMutableArray *values = [NSMutableArray arrayWithCapacity:[tmpValues count]];
+            for (NSString *a_tag in tmpValues) {
+                [values addObject:[a_tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+            }
+			item.tags = values;
+        }
 		
 		else
 			[item setCustomValue:[formValues objectForKey:key] forKey:key];
@@ -762,7 +790,7 @@
         if (curOptionController) {
             [self popViewControllerAnimated:NO];//dismiss option controller
             curOptionController = nil;
-            NSAssert([[self topViewController] class] == [SHKCustomFormController class], @"topViewController must be SHKCustomFormController now!");
+            NSAssert([[self topViewController] isKindOfClass:[SHKFormController class]], @"topViewController must be SHKFormController now!");
             [self updateItemWithForm:(SHKFormController *)self.topViewController];
         }        
     }
@@ -779,7 +807,8 @@
 - (void)sendDidFailWithError:(NSError *)error shouldRelogin:(BOOL)shouldRelogin
 {
 	self.lastError = error;
-	
+	SHKLog(@"%@", [self.request description]);
+    
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"SHKSendDidFailWithError" object:self];
     
 	if ([self.shareDelegate respondsToSelector:@selector(sharer:failedWithError:shouldRelogin:)])
@@ -801,6 +830,27 @@
     if ([self.shareDelegate respondsToSelector:@selector(sharerAuthDidFinish:success:)]) {		
         [self.shareDelegate sharerAuthDidFinish:self success:success];
     }
+}
+
+- (void)authShowBadCredentialsAlert {
+    
+    SHKLog(@"%@", [self.request description]);
+    if ([self.shareDelegate respondsToSelector:@selector(sharerShowBadCredentialsAlert:)]) {		
+        [self.shareDelegate sharerShowBadCredentialsAlert:self];
+    }
+}
+
+- (void)authShowOtherAuthorizationErrorAlert {
+    
+    SHKLog(@"%@", [self.request description]);
+    if ([self.shareDelegate respondsToSelector:@selector(sharerShowOtherAuthorizationErrorAlert:)]) {
+        [self.shareDelegate sharerShowOtherAuthorizationErrorAlert:self];
+    }
+}
+
+- (void)sendShowSimpleErrorAlert {
+    
+    [self sendDidFailWithError:[SHK error:SHKLocalizedString(@"There was a problem saving to %@", [[self class] sharerTitle])]];
 }
 
 @end

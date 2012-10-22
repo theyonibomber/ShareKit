@@ -20,8 +20,10 @@
 		<string>SHKTencentWeibo</string>
 		<string>SHKRenRen</string>
 		<string>SHKPlurk</string>
+		<string>SHKKippt</string>
 		<string>SHKReadability</string>
 		<string>SHKEvernote</string>
+		<string>SHKDelicious</string>
 		<string>SHKTwitter</string>
 		<string>SHKDiigo</string>
 		<string>SHKPinboard</string>
@@ -34,6 +36,7 @@
 		<string>SHKFlickr</string>
 		<string>SHKLinkedIn</string>
 		<string>SHKFoursquareV2</string>
+		<string>SHKInstagram</string>
 	</array>
 </dict>
 </plist>

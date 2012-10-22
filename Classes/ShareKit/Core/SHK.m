@@ -28,7 +28,6 @@
 #import "SHK.h"
 #import "SHKActivityIndicator.h"
 #import "SHKConfiguration.h"
-#import "SHKViewControllerWrapper.h"
 #import "SHKActionSheet.h"
 #import "SHKOfflineSharer.h"
 #import "SSKeychain.h"
@@ -37,6 +36,7 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #import <MessageUI/MessageUI.h>
+#include <sys/xattr.h>
 
 NSString * SHKLocalizedStringFormat(NSString* key);
 NSString * const SHKHideCurrentViewFinishedNotification = @"SHKHideCurrentViewFinished";
@@ -133,7 +133,7 @@ BOOL SHKinit;
 		UINavigationController *nav = [[[UINavigationController alloc] initWithRootViewController:vc] autorelease];
 		
 		if ([nav respondsToSelector:@selector(modalPresentationStyle)])
-			nav.modalPresentationStyle = [SHK modalPresentationStyle];
+			nav.modalPresentationStyle = [SHK modalPresentationStyleForController:vc];
 		
 		if ([nav respondsToSelector:@selector(modalTransitionStyle)])
 			nav.modalTransitionStyle = [SHK modalTransitionStyle];
@@ -149,7 +149,7 @@ BOOL SHKinit;
 	else
 	{		
 		if ([vc respondsToSelector:@selector(modalPresentationStyle)])
-			vc.modalPresentationStyle = [SHK modalPresentationStyle];
+			vc.modalPresentationStyle = [SHK modalPresentationStyleForController:vc];
 		
 		if ([vc respondsToSelector:@selector(modalTransitionStyle)])
 			vc.modalTransitionStyle = [SHK modalTransitionStyle];
@@ -286,15 +286,17 @@ BOOL SHKinit;
 	return UIBarStyleDefault;
 }
 
-+ (UIModalPresentationStyle)modalPresentationStyle
++ (UIModalPresentationStyle)modalPresentationStyleForController:(UIViewController *)controller
 {
-	if ([SHKCONFIG(modalPresentationStyle) isEqualToString:@"UIModalPresentationFullScreen"])
+	NSString *styleString = SHKCONFIG_WITH_ARGUMENT(modalPresentationStyleForController:, controller);
+	
+	if ([styleString isEqualToString:@"UIModalPresentationFullScreen"])
 		return UIModalPresentationFullScreen;
 	
-	else if ([SHKCONFIG(modalPresentationStyle) isEqualToString:@"UIModalPresentationPageSheet"])
+	else if ([styleString isEqualToString:@"UIModalPresentationPageSheet"])
 		return UIModalPresentationPageSheet;
 	
-	else if ([SHKCONFIG(modalPresentationStyle) isEqualToString:@"UIModalPresentationFormSheet"])
+	else if ([styleString isEqualToString:@"UIModalPresentationFormSheet"])
 		return UIModalPresentationFormSheet;
 	
 	return UIModalPresentationCurrentContext;
@@ -496,12 +498,40 @@ BOOL SHKinit;
 
 #pragma mark -
 
+static NSString *shareKitLibraryBundlePath = nil;
+
++ (NSString *)shareKitLibraryBundlePath
+{
+    if (shareKitLibraryBundlePath == nil) {
+        
+        shareKitLibraryBundlePath = [[[NSBundle bundleForClass:[SHK class]] pathForResource:@"ShareKit" 
+                                                                                     ofType:@"bundle"] retain];
+    }
+    return shareKitLibraryBundlePath;
+}
+
 static NSDictionary *sharersDictionary = nil;
 
 + (NSDictionary *)sharersDictionary
 {
 	if (sharersDictionary == nil)
-		sharersDictionary = [[NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:SHKCONFIG(sharersPlistName)]] retain];
+    {        
+		sharersDictionary = [[NSDictionary dictionaryWithContentsOfFile:[[SHK shareKitLibraryBundlePath] stringByAppendingPathComponent:SHKCONFIG(sharersPlistName)]] retain];
+    }
+    
+    //if user sets his own sharers plist - name only
+    if (sharersDictionary == nil) 
+    {
+        sharersDictionary = [[NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:SHKCONFIG(sharersPlistName)]] retain];
+    }
+    
+    //if user sets his own sharers plist - complete path
+    if (sharersDictionary == nil) {
+        sharersDictionary = [[NSDictionary dictionaryWithContentsOfFile:SHKCONFIG(sharersPlistName)] retain];
+    }
+    
+    NSAssert(sharersDictionary != nil, @"ShareKit: You do not have properly set sharersPlistName");
+    
 	
 	return sharersDictionary;
 }
@@ -518,15 +548,19 @@ static NSDictionary *sharersDictionary = nil;
 	NSString *SHKPath = [cache stringByAppendingPathComponent:@"SHK"];
 	
 	// Check if the path exists, otherwise create it
-	if (![fileManager fileExistsAtPath:SHKPath]) 
+	if (![fileManager fileExistsAtPath:SHKPath]) {
 		[fileManager createDirectoryAtPath:SHKPath withIntermediateDirectories:YES attributes:nil error:nil];
+                [[NSFileManager defaultManager] addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:SHKPath]];
+    }
 	
 	return SHKPath;
 }
 
 + (NSString *)offlineQueueListPath
 {
-	return [[self offlineQueuePath] stringByAppendingPathComponent:@"SHKOfflineQueue.plist"];
+	NSString *offlinePathString = [[self offlineQueuePath] stringByAppendingPathComponent:@"SHKOfflineQueue.plist"];
+        [[NSFileManager defaultManager] addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:offlinePathString]];
+        return offlinePathString;
 }
 
 + (NSMutableArray *)getOfflineQueueList
@@ -752,9 +786,10 @@ NSString* SHKLocalizedStringFormat(NSString* key)
 {
   static NSBundle* bundle = nil;
   if (nil == bundle) {
-    NSString* path = [[[NSBundle bundleForClass:[SHK class]] resourcePath]
-                      stringByAppendingPathComponent:@"ShareKit.bundle"];
+    NSString* path = [[SHK shareKitLibraryBundlePath] stringByAppendingPathComponent:@"ShareKit.bundle"];
     bundle = [[NSBundle bundleWithPath:path] retain];
+    
+    NSCAssert(bundle != nil,@"ShareKit has been refactored to be used as Xcode subproject. Please follow the updated installation wiki and re-add it to the project. Please do not forget to clean project and clean build folder afterwards");
   }
   return [bundle localizedStringForKey:key value:key table:nil];
 }
@@ -771,3 +806,33 @@ NSString* SHKLocalizedString(NSString* key, ...)
 	
 	return string;
 }
+
+@implementation NSFileManager (DoNotBackup)
+
+- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    const char* filePath = [[URL path] fileSystemRepresentation];
+    const char* attrName = "com.apple.MobileBackup";
+    if (&NSURLIsExcludedFromBackupKey == nil) {
+        // iOS 5.0.1 and lower
+        u_int8_t attrValue = 1;
+        int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+        return result == 0;
+    }
+    else {
+        // First try and remove the extended attribute if it is present
+        int result = getxattr(filePath, attrName, NULL, sizeof(u_int8_t), 0, 0);
+        if (result != -1) {
+            // The attribute exists, we need to remove it
+            int removeResult = removexattr(filePath, attrName, 0);
+            if (removeResult == 0) {
+                NSLog(@"Removed extended attribute on file %@", URL);
+            }
+        }
+        
+        // Set the new key
+        return [URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil];
+    }
+}
+
+@end

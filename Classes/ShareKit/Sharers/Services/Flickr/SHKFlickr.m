@@ -70,6 +70,11 @@ NSString *kPutInGroupsStep = @"kPutInGroupsStep";
 	return YES;
 }
 
++ (BOOL)canAutoShare
+{
+	return NO;
+}
+
 - (BOOL)isAuthorized 
 {
 	return [self.flickrContext.authToken length];
@@ -126,10 +131,10 @@ NSString *kPutInGroupsStep = @"kPutInGroupsStep";
 															 key:@"description"
 															type:SHKFormFieldTypeText
 														   start:self.item.text],
-									 [SHKFormFieldSettings label:SHKLocalizedString(@"Tag (space) Tag")
+									 [SHKFormFieldSettings label:SHKLocalizedString(@"Tag, tag")
 															 key:@"tags"
 															type:SHKFormFieldTypeText
-														   start:self.item.tags],
+														   start:[self.item.tags componentsJoinedByString:@", "]],
 									 [SHKFormFieldSettings label:SHKLocalizedString(@"Is Public")
 															 key:@"is_public"
 															type:SHKFormFieldTypeSwitch
@@ -145,14 +150,15 @@ NSString *kPutInGroupsStep = @"kPutInGroupsStep";
 									 [SHKFormFieldSettings label:SHKLocalizedString(@"Post To Groups")
 															 key:@"postgroup"
 															type:SHKFormFieldTypeOptionPicker
-														   start:@"Select Group"
-												optionPickerInfo:[NSMutableDictionary dictionaryWithObjectsAndKeys:@"Flickr Groups", @"title",
+														   start:nil
+												optionPickerInfo:[NSMutableDictionary dictionaryWithObjectsAndKeys:SHKLocalizedString(@"Flickr Groups"), @"title",
 																  @"-1", @"curIndexes",
 																  [NSArray array],@"itemsList",
 																  [NSNumber numberWithBool:NO], @"static",
 																  [NSNumber numberWithBool:YES], @"allowMultiple",
 																  self, @"SHKFormOptionControllerOptionProvider",
-																  nil]],
+																  nil]
+                                        optionDetailLabelDefault:SHKLocalizedString(@"Select Group")],
 									 nil
 									 ];
 		
@@ -192,12 +198,15 @@ NSString *kPutInGroupsStep = @"kPutInGroupsStep";
 	[self sendDidStart];
 	NSData *JPEGData = [self generateImageData];
 	self.flickrRequest.sessionInfo = kUploadImageStep;
+    
+    NSString *tagString = [self tagStringJoinedBy:@" " allowedCharacters:[NSCharacterSet alphanumericCharacterSet] tagPrefix:nil];
+    
 	NSString* descript = [item customValueForKey:@"description"] != nil ? [item customValueForKey:@"description"] : @"";
 	NSString* titleVal = item.title != nil && ![item.title isEqualToString:@""] ? item.title : @"photo";
 	NSDictionary* args = [NSDictionary dictionaryWithObjectsAndKeys:
 						  titleVal, @"title",
 						  descript, @"description",
-						  item.tags == nil ? @"" : item.tags, @"tags",
+						  item.tags == nil ? @"" : tagString, @"tags",
 						  [item customValueForKey:@"is_public"], @"is_public",
 						  [item customValueForKey:@"is_friend"], @"is_friend",
 						  [item customValueForKey:@"is_family"], @"is_family",

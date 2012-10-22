@@ -126,7 +126,9 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 	
 	if ([self twitterFrameworkAvailable]) {
 		
-		[SHKiOS5Twitter shareItem:self.item];
+		SHKSharer *sharer =[SHKiOS5Twitter shareItem:self.item];
+        sharer.quiet = self.quiet;
+        sharer.shareDelegate = self.shareDelegate;
 		[SHKTwitter logout];//to clean credentials - we will not need them anymore
 		return;
 	}
@@ -164,22 +166,13 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 		result = isURLAlreadyShortened;
 		
 	}
+    
+    NSString *hashtags = [self tagStringJoinedBy:@" " allowedCharacters:[NSCharacterSet alphanumericCharacterSet] tagPrefix:@"#"];
+    
+    NSString *tweetBody = [NSString stringWithFormat:@"%@%@%@",(item.shareType == SHKShareTypeText ? item.text : item.title ),([hashtags length] ? @" " : @""), hashtags];
 	
-	else if (item.shareType == SHKShareTypeImage)
-	{
-		[item setCustomValue:item.title forKey:@"status"];
-	}
-	
-	else if (item.shareType == SHKShareTypeVideo)
-	{
-		[item setCustomValue:item.title forKey:@"status"];
-	}
-	
-	else if (item.shareType == SHKShareTypeText)
-	{
-		[item setCustomValue:item.text forKey:@"status"];
-	}
-	
+    [item setCustomValue:tweetBody forKey:@"status"];
+    
 	return result;
 }
 
@@ -382,7 +375,7 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 	
 	NSString *result = [[aRequest getResult] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 	
-	if (result == nil || [NSURL URLWithString:result] == nil)
+	if (!aRequest.success || result == nil || [NSURL URLWithString:result] == nil)
 	{
 		// TODO - better error message
 		[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Shorten URL Error")
@@ -390,8 +383,10 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 											 delegate:nil
 								 cancelButtonTitle:SHKLocalizedString(@"Continue")
 								 otherButtonTitles:nil] autorelease] show];
-		
-		[item setCustomValue:[NSString stringWithFormat:@"%@ %@", item.title ? item.title : item.text, [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] forKey:@"status"];
+        
+        NSString *currentStatus = [item customValueForKey:@"status"];
+        
+		[item setCustomValue:[NSString stringWithFormat:@"%@ %@", currentStatus, [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] forKey:@"status"];
 	}
 	
 	else
@@ -399,8 +394,10 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 		///if already a bitly login, use url instead
 		if ([result isEqualToString:@"ALREADY_A_BITLY_LINK"])
 			result = [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSString *currentStatus = [item customValueForKey:@"status"];
 		
-		[item setCustomValue:[NSString stringWithFormat:@"%@ %@", item.title ? item.title : item.text, result] forKey:@"status"];
+		[item setCustomValue:[NSString stringWithFormat:@"%@ %@", currentStatus, result] forKey:@"status"];
 	}
 	
 	[super share];
@@ -589,7 +586,7 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 {
 	
 	NSURL *serviceURL = nil;
-	if([item customValueForKey:@"profile_update"]){
+	if([item customValueForKey:@"profile_update"]){//update_profile does not work
 		serviceURL = [NSURL URLWithString:@"https://api.twitter.com/1/account/update_profile_image.json"];
 	} else {
 		serviceURL = [NSURL URLWithString:@"https://api.twitter.com/1/account/verify_credentials.xml"];
@@ -602,7 +599,7 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 																			 signatureProvider:signatureProvider];
 	[oRequest setHTTPMethod:@"GET"];
 	
-	if([item customValueForKey:@"profile_update"]){
+	if([item customValueForKey:@"profile_update"]){//update_profile does not work
 		[oRequest prepare];
 	} else {
 		[oRequest prepare];
@@ -631,7 +628,7 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 	
 	NSMutableData *body = [NSMutableData data];
 	NSString *dispKey = @"";
-	if([item customValueForKey:@"profile_update"]){
+	if([item customValueForKey:@"profile_update"]){//update_profile does not work
 		dispKey = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"image\"; filename=\"%@\"\r\n", filename];
 	} else {
 		dispKey = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"media\"; filename=\"%@\"\r\n", filename];
@@ -644,7 +641,7 @@ static NSString *const kSHKTwitterUserInfo=@"kSHKTwitterUserInfo";
 	[body appendData:data];
 	[body appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 	
-	if([item customValueForKey:@"profile_update"]){
+	if([item customValueForKey:@"profile_update"]){//update_profile does not work
 		// no ops
 	} else {
 		[body appendData:[[NSString stringWithFormat:@"--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
