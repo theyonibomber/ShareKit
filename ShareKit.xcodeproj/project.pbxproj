@@ -524,6 +524,77 @@
 		7AEE0450160E1DC500FEC06E /* SHKReadItLater.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A536E611DBE3B9004A1712 /* SHKReadItLater.m */; };
 		7AEE0451160E1DD200FEC06E /* SHKTumblr.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C91DF411EBAE4800F31FAE /* SHKTumblr.m */; };
 		C0D3077B147BDC8100E74EA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D3077A147BDC8100E74EA3 /* CoreLocation.framework */; };
+		FCFAE7E216358D1300D0AC0C /* SHKDouban.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE78016358D1200D0AC0C /* SHKDouban.h */; };
+		FCFAE7E316358D1300D0AC0C /* SHKDouban.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE78116358D1200D0AC0C /* SHKDouban.m */; };
+		FCFAE7E416358D1300D0AC0C /* SHKNetEaseWeibo.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE78316358D1200D0AC0C /* SHKNetEaseWeibo.h */; };
+		FCFAE7E516358D1300D0AC0C /* SHKNetEaseWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE78416358D1200D0AC0C /* SHKNetEaseWeibo.m */; };
+		FCFAE7E616358D1300D0AC0C /* SHKPlurk.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE78616358D1200D0AC0C /* SHKPlurk.h */; };
+		FCFAE7E716358D1300D0AC0C /* SHKPlurk.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE78716358D1200D0AC0C /* SHKPlurk.m */; };
+		FCFAE7E816358D1300D0AC0C /* ROError.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE78C16358D1200D0AC0C /* ROError.h */; };
+		FCFAE7E916358D1300D0AC0C /* ROError.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE78D16358D1200D0AC0C /* ROError.m */; };
+		FCFAE7EA16358D1300D0AC0C /* Renren.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE79B16358D1200D0AC0C /* Renren.h */; };
+		FCFAE7EB16358D1300D0AC0C /* Renren.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79C16358D1200D0AC0C /* Renren.m */; };
+		FCFAE7EC16358D1300D0AC0C /* ROAlbumsInfoRequestParam.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE79E16358D1200D0AC0C /* ROAlbumsInfoRequestParam.h */; };
+		FCFAE7ED16358D1300D0AC0C /* ROAlbumsInfoRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79F16358D1200D0AC0C /* ROAlbumsInfoRequestParam.m */; };
+		FCFAE7EE16358D1300D0AC0C /* ROCreateAlbumRequestParam.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7A016358D1200D0AC0C /* ROCreateAlbumRequestParam.h */; };
+		FCFAE7EF16358D1300D0AC0C /* ROCreateAlbumRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A116358D1200D0AC0C /* ROCreateAlbumRequestParam.m */; };
+		FCFAE7F016358D1300D0AC0C /* ROGetFriendsInfoRequestParam.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7A216358D1200D0AC0C /* ROGetFriendsInfoRequestParam.h */; };
+		FCFAE7F116358D1300D0AC0C /* ROGetFriendsInfoRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A316358D1200D0AC0C /* ROGetFriendsInfoRequestParam.m */; };
+		FCFAE7F216358D1300D0AC0C /* ROGetFriendsRequestParam.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7A416358D1200D0AC0C /* ROGetFriendsRequestParam.h */; };
+		FCFAE7F316358D1300D0AC0C /* ROGetFriendsRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A516358D1200D0AC0C /* ROGetFriendsRequestParam.m */; };
+		FCFAE7F416358D1300D0AC0C /* ROPasswordFlowRequestParam.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7A616358D1200D0AC0C /* ROPasswordFlowRequestParam.h */; };
+		FCFAE7F516358D1300D0AC0C /* ROPasswordFlowRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A716358D1200D0AC0C /* ROPasswordFlowRequestParam.m */; };
+		FCFAE7F616358D1300D0AC0C /* ROPublishPhotoRequestParam.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7A816358D1200D0AC0C /* ROPublishPhotoRequestParam.h */; };
+		FCFAE7F716358D1300D0AC0C /* ROPublishPhotoRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A916358D1200D0AC0C /* ROPublishPhotoRequestParam.m */; };
+		FCFAE7F816358D1300D0AC0C /* RORequestParam.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7AA16358D1200D0AC0C /* RORequestParam.h */; };
+		FCFAE7F916358D1300D0AC0C /* RORequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7AB16358D1200D0AC0C /* RORequestParam.m */; };
+		FCFAE7FA16358D1300D0AC0C /* ROUserInfoRequestParam.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7AC16358D1200D0AC0C /* ROUserInfoRequestParam.h */; };
+		FCFAE7FB16358D1300D0AC0C /* ROUserInfoRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7AD16358D1200D0AC0C /* ROUserInfoRequestParam.m */; };
+		FCFAE7FC16358D1300D0AC0C /* ROAlbumResponseltem.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7AF16358D1200D0AC0C /* ROAlbumResponseltem.h */; };
+		FCFAE7FD16358D1300D0AC0C /* ROAlbumResponseltem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B016358D1200D0AC0C /* ROAlbumResponseltem.m */; };
+		FCFAE7FE16358D1300D0AC0C /* ROCreateAlbumResponseItem.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7B116358D1200D0AC0C /* ROCreateAlbumResponseItem.h */; };
+		FCFAE7FF16358D1300D0AC0C /* ROCreateAlbumResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B216358D1200D0AC0C /* ROCreateAlbumResponseItem.m */; };
+		FCFAE80016358D1300D0AC0C /* ROFriendResponseItem.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7B316358D1200D0AC0C /* ROFriendResponseItem.h */; };
+		FCFAE80116358D1300D0AC0C /* ROFriendResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B416358D1200D0AC0C /* ROFriendResponseItem.m */; };
+		FCFAE80216358D1300D0AC0C /* ROPublishPhotoResponseItem.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7B516358D1200D0AC0C /* ROPublishPhotoResponseItem.h */; };
+		FCFAE80316358D1300D0AC0C /* ROPublishPhotoResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B616358D1200D0AC0C /* ROPublishPhotoResponseItem.m */; };
+		FCFAE80416358D1300D0AC0C /* ROResponseItem.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7B716358D1200D0AC0C /* ROResponseItem.h */; };
+		FCFAE80516358D1300D0AC0C /* ROResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B816358D1200D0AC0C /* ROResponseItem.m */; };
+		FCFAE80616358D1300D0AC0C /* ROUserResponseItem.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7B916358D1200D0AC0C /* ROUserResponseItem.h */; };
+		FCFAE80716358D1300D0AC0C /* ROUserResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7BA16358D1200D0AC0C /* ROUserResponseItem.m */; };
+		FCFAE80816358D1300D0AC0C /* ROConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7BB16358D1200D0AC0C /* ROConnect.h */; };
+		FCFAE80916358D1300D0AC0C /* RODialog.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7BC16358D1200D0AC0C /* RODialog.h */; };
+		FCFAE80A16358D1300D0AC0C /* RODialog.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7BD16358D1200D0AC0C /* RODialog.m */; };
+		FCFAE80B16358D1300D0AC0C /* RORequest.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7BE16358D1200D0AC0C /* RORequest.h */; };
+		FCFAE80C16358D1300D0AC0C /* RORequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7BF16358D1200D0AC0C /* RORequest.m */; };
+		FCFAE80D16358D1300D0AC0C /* ROResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7C016358D1200D0AC0C /* ROResponse.h */; };
+		FCFAE80E16358D1300D0AC0C /* ROResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7C116358D1200D0AC0C /* ROResponse.m */; };
+		FCFAE80F16358D1300D0AC0C /* RODialogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7C316358D1200D0AC0C /* RODialogModel.h */; };
+		FCFAE81016358D1300D0AC0C /* RODialogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7C416358D1200D0AC0C /* RODialogModel.m */; };
+		FCFAE81116358D1300D0AC0C /* RODialogView.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7C516358D1200D0AC0C /* RODialogView.h */; };
+		FCFAE81216358D1300D0AC0C /* RODialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7C616358D1200D0AC0C /* RODialogView.m */; };
+		FCFAE81316358D1300D0AC0C /* ROPublishPhotoDialogModel.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7C816358D1200D0AC0C /* ROPublishPhotoDialogModel.h */; };
+		FCFAE81416358D1300D0AC0C /* ROPublishPhotoDialogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7C916358D1200D0AC0C /* ROPublishPhotoDialogModel.m */; };
+		FCFAE81516358D1300D0AC0C /* ROPublishPhotoInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7CA16358D1200D0AC0C /* ROPublishPhotoInternal.h */; };
+		FCFAE81616358D1300D0AC0C /* ROPublishPhotoInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7CB16358D1200D0AC0C /* ROPublishPhotoInternal.m */; };
+		FCFAE81716358D1300D0AC0C /* ROUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7CD16358D1200D0AC0C /* ROUtility.h */; };
+		FCFAE81816358D1300D0AC0C /* ROUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7CE16358D1200D0AC0C /* ROUtility.m */; };
+		FCFAE81916358D1300D0AC0C /* ROCloseButton.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7D016358D1200D0AC0C /* ROCloseButton.h */; };
+		FCFAE81A16358D1300D0AC0C /* ROCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7D116358D1300D0AC0C /* ROCloseButton.m */; };
+		FCFAE81B16358D1300D0AC0C /* ROGlobalStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7D216358D1300D0AC0C /* ROGlobalStyle.h */; };
+		FCFAE81C16358D1300D0AC0C /* ROGlobalStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7D316358D1300D0AC0C /* ROGlobalStyle.m */; };
+		FCFAE81D16358D1300D0AC0C /* ROImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7D416358D1300D0AC0C /* ROImageView.h */; };
+		FCFAE81E16358D1300D0AC0C /* ROImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7D516358D1300D0AC0C /* ROImageView.m */; };
+		FCFAE81F16358D1300D0AC0C /* SHKRenRen.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7D616358D1300D0AC0C /* SHKRenRen.h */; };
+		FCFAE82016358D1300D0AC0C /* SHKRenRen.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7D716358D1300D0AC0C /* SHKRenRen.m */; };
+		FCFAE82116358D1300D0AC0C /* SHKSinaWeibo.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7D916358D1300D0AC0C /* SHKSinaWeibo.h */; };
+		FCFAE82216358D1300D0AC0C /* SHKSinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7DA16358D1300D0AC0C /* SHKSinaWeibo.m */; };
+		FCFAE82316358D1300D0AC0C /* SHKTencentWeibo.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7DC16358D1300D0AC0C /* SHKTencentWeibo.h */; };
+		FCFAE82416358D1300D0AC0C /* SHKTencentWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7DD16358D1300D0AC0C /* SHKTencentWeibo.m */; };
+		FCFAE82516358D1300D0AC0C /* TencentOAMutableURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7DE16358D1300D0AC0C /* TencentOAMutableURLRequest.h */; };
+		FCFAE82616358D1300D0AC0C /* TencentOAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7DF16358D1300D0AC0C /* TencentOAMutableURLRequest.m */; };
+		FCFAE82716358D1300D0AC0C /* TencentOAuthView.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE7E016358D1300D0AC0C /* TencentOAuthView.h */; };
+		FCFAE82816358D1300D0AC0C /* TencentOAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7E116358D1300D0AC0C /* TencentOAuthView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -867,6 +938,89 @@
 		FA5AA3B7149625460064DB24 /* SHKVkontakteOAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKVkontakteOAuthView.h; sourceTree = "<group>"; };
 		FA5AA3BA149625460064DB24 /* SHKVkontakte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKVkontakte.m; sourceTree = "<group>"; };
 		FA5AA3BB149625460064DB24 /* SHKVkontakte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKVkontakte.h; sourceTree = "<group>"; };
+		FCFAE78016358D1200D0AC0C /* SHKDouban.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKDouban.h; sourceTree = "<group>"; };
+		FCFAE78116358D1200D0AC0C /* SHKDouban.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKDouban.m; sourceTree = "<group>"; };
+		FCFAE78316358D1200D0AC0C /* SHKNetEaseWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKNetEaseWeibo.h; sourceTree = "<group>"; };
+		FCFAE78416358D1200D0AC0C /* SHKNetEaseWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKNetEaseWeibo.m; sourceTree = "<group>"; };
+		FCFAE78616358D1200D0AC0C /* SHKPlurk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKPlurk.h; sourceTree = "<group>"; };
+		FCFAE78716358D1200D0AC0C /* SHKPlurk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKPlurk.m; sourceTree = "<group>"; };
+		FCFAE78C16358D1200D0AC0C /* ROError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROError.h; sourceTree = "<group>"; };
+		FCFAE78D16358D1200D0AC0C /* ROError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROError.m; sourceTree = "<group>"; };
+		FCFAE78F16358D1200D0AC0C /* bottom-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom-bar.png"; sourceTree = "<group>"; };
+		FCFAE79016358D1200D0AC0C /* bottom-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom-bar@2x.png"; sourceTree = "<group>"; };
+		FCFAE79116358D1200D0AC0C /* head-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-frame.png"; sourceTree = "<group>"; };
+		FCFAE79216358D1200D0AC0C /* head-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "head-frame@2x.png"; sourceTree = "<group>"; };
+		FCFAE79316358D1200D0AC0C /* input-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-frame.png"; sourceTree = "<group>"; };
+		FCFAE79416358D1200D0AC0C /* input-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input-frame@2x.png"; sourceTree = "<group>"; };
+		FCFAE79516358D1200D0AC0C /* photo-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-frame.png"; sourceTree = "<group>"; };
+		FCFAE79616358D1200D0AC0C /* photo-frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo-frame@2x.png"; sourceTree = "<group>"; };
+		FCFAE79716358D1200D0AC0C /* renren-logo-top-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "renren-logo-top-bar.png"; sourceTree = "<group>"; };
+		FCFAE79816358D1200D0AC0C /* renren-logo-top-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "renren-logo-top-bar@2x.png"; sourceTree = "<group>"; };
+		FCFAE79916358D1200D0AC0C /* small-button-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-button-normal.png"; sourceTree = "<group>"; };
+		FCFAE79A16358D1200D0AC0C /* small-button-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-button-normal@2x.png"; sourceTree = "<group>"; };
+		FCFAE79B16358D1200D0AC0C /* Renren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renren.h; sourceTree = "<group>"; };
+		FCFAE79C16358D1200D0AC0C /* Renren.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renren.m; sourceTree = "<group>"; };
+		FCFAE79E16358D1200D0AC0C /* ROAlbumsInfoRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROAlbumsInfoRequestParam.h; sourceTree = "<group>"; };
+		FCFAE79F16358D1200D0AC0C /* ROAlbumsInfoRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROAlbumsInfoRequestParam.m; sourceTree = "<group>"; };
+		FCFAE7A016358D1200D0AC0C /* ROCreateAlbumRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROCreateAlbumRequestParam.h; sourceTree = "<group>"; };
+		FCFAE7A116358D1200D0AC0C /* ROCreateAlbumRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROCreateAlbumRequestParam.m; sourceTree = "<group>"; };
+		FCFAE7A216358D1200D0AC0C /* ROGetFriendsInfoRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROGetFriendsInfoRequestParam.h; sourceTree = "<group>"; };
+		FCFAE7A316358D1200D0AC0C /* ROGetFriendsInfoRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROGetFriendsInfoRequestParam.m; sourceTree = "<group>"; };
+		FCFAE7A416358D1200D0AC0C /* ROGetFriendsRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROGetFriendsRequestParam.h; sourceTree = "<group>"; };
+		FCFAE7A516358D1200D0AC0C /* ROGetFriendsRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROGetFriendsRequestParam.m; sourceTree = "<group>"; };
+		FCFAE7A616358D1200D0AC0C /* ROPasswordFlowRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROPasswordFlowRequestParam.h; sourceTree = "<group>"; };
+		FCFAE7A716358D1200D0AC0C /* ROPasswordFlowRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROPasswordFlowRequestParam.m; sourceTree = "<group>"; };
+		FCFAE7A816358D1200D0AC0C /* ROPublishPhotoRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROPublishPhotoRequestParam.h; sourceTree = "<group>"; };
+		FCFAE7A916358D1200D0AC0C /* ROPublishPhotoRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROPublishPhotoRequestParam.m; sourceTree = "<group>"; };
+		FCFAE7AA16358D1200D0AC0C /* RORequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORequestParam.h; sourceTree = "<group>"; };
+		FCFAE7AB16358D1200D0AC0C /* RORequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORequestParam.m; sourceTree = "<group>"; };
+		FCFAE7AC16358D1200D0AC0C /* ROUserInfoRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROUserInfoRequestParam.h; sourceTree = "<group>"; };
+		FCFAE7AD16358D1200D0AC0C /* ROUserInfoRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROUserInfoRequestParam.m; sourceTree = "<group>"; };
+		FCFAE7AF16358D1200D0AC0C /* ROAlbumResponseltem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROAlbumResponseltem.h; sourceTree = "<group>"; };
+		FCFAE7B016358D1200D0AC0C /* ROAlbumResponseltem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROAlbumResponseltem.m; sourceTree = "<group>"; };
+		FCFAE7B116358D1200D0AC0C /* ROCreateAlbumResponseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROCreateAlbumResponseItem.h; sourceTree = "<group>"; };
+		FCFAE7B216358D1200D0AC0C /* ROCreateAlbumResponseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROCreateAlbumResponseItem.m; sourceTree = "<group>"; };
+		FCFAE7B316358D1200D0AC0C /* ROFriendResponseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROFriendResponseItem.h; sourceTree = "<group>"; };
+		FCFAE7B416358D1200D0AC0C /* ROFriendResponseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROFriendResponseItem.m; sourceTree = "<group>"; };
+		FCFAE7B516358D1200D0AC0C /* ROPublishPhotoResponseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROPublishPhotoResponseItem.h; sourceTree = "<group>"; };
+		FCFAE7B616358D1200D0AC0C /* ROPublishPhotoResponseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROPublishPhotoResponseItem.m; sourceTree = "<group>"; };
+		FCFAE7B716358D1200D0AC0C /* ROResponseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROResponseItem.h; sourceTree = "<group>"; };
+		FCFAE7B816358D1200D0AC0C /* ROResponseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROResponseItem.m; sourceTree = "<group>"; };
+		FCFAE7B916358D1200D0AC0C /* ROUserResponseItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROUserResponseItem.h; sourceTree = "<group>"; };
+		FCFAE7BA16358D1200D0AC0C /* ROUserResponseItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROUserResponseItem.m; sourceTree = "<group>"; };
+		FCFAE7BB16358D1200D0AC0C /* ROConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROConnect.h; sourceTree = "<group>"; };
+		FCFAE7BC16358D1200D0AC0C /* RODialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RODialog.h; sourceTree = "<group>"; };
+		FCFAE7BD16358D1200D0AC0C /* RODialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RODialog.m; sourceTree = "<group>"; };
+		FCFAE7BE16358D1200D0AC0C /* RORequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RORequest.h; sourceTree = "<group>"; };
+		FCFAE7BF16358D1200D0AC0C /* RORequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RORequest.m; sourceTree = "<group>"; };
+		FCFAE7C016358D1200D0AC0C /* ROResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROResponse.h; sourceTree = "<group>"; };
+		FCFAE7C116358D1200D0AC0C /* ROResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROResponse.m; sourceTree = "<group>"; };
+		FCFAE7C316358D1200D0AC0C /* RODialogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RODialogModel.h; sourceTree = "<group>"; };
+		FCFAE7C416358D1200D0AC0C /* RODialogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RODialogModel.m; sourceTree = "<group>"; };
+		FCFAE7C516358D1200D0AC0C /* RODialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RODialogView.h; sourceTree = "<group>"; };
+		FCFAE7C616358D1200D0AC0C /* RODialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RODialogView.m; sourceTree = "<group>"; };
+		FCFAE7C816358D1200D0AC0C /* ROPublishPhotoDialogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROPublishPhotoDialogModel.h; sourceTree = "<group>"; };
+		FCFAE7C916358D1200D0AC0C /* ROPublishPhotoDialogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROPublishPhotoDialogModel.m; sourceTree = "<group>"; };
+		FCFAE7CA16358D1200D0AC0C /* ROPublishPhotoInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROPublishPhotoInternal.h; sourceTree = "<group>"; };
+		FCFAE7CB16358D1200D0AC0C /* ROPublishPhotoInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROPublishPhotoInternal.m; sourceTree = "<group>"; };
+		FCFAE7CD16358D1200D0AC0C /* ROUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROUtility.h; sourceTree = "<group>"; };
+		FCFAE7CE16358D1200D0AC0C /* ROUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROUtility.m; sourceTree = "<group>"; };
+		FCFAE7D016358D1200D0AC0C /* ROCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROCloseButton.h; sourceTree = "<group>"; };
+		FCFAE7D116358D1300D0AC0C /* ROCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROCloseButton.m; sourceTree = "<group>"; };
+		FCFAE7D216358D1300D0AC0C /* ROGlobalStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROGlobalStyle.h; sourceTree = "<group>"; };
+		FCFAE7D316358D1300D0AC0C /* ROGlobalStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROGlobalStyle.m; sourceTree = "<group>"; };
+		FCFAE7D416358D1300D0AC0C /* ROImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROImageView.h; sourceTree = "<group>"; };
+		FCFAE7D516358D1300D0AC0C /* ROImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROImageView.m; sourceTree = "<group>"; };
+		FCFAE7D616358D1300D0AC0C /* SHKRenRen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKRenRen.h; sourceTree = "<group>"; };
+		FCFAE7D716358D1300D0AC0C /* SHKRenRen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKRenRen.m; sourceTree = "<group>"; };
+		FCFAE7D916358D1300D0AC0C /* SHKSinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKSinaWeibo.h; sourceTree = "<group>"; };
+		FCFAE7DA16358D1300D0AC0C /* SHKSinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKSinaWeibo.m; sourceTree = "<group>"; };
+		FCFAE7DC16358D1300D0AC0C /* SHKTencentWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKTencentWeibo.h; sourceTree = "<group>"; };
+		FCFAE7DD16358D1300D0AC0C /* SHKTencentWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKTencentWeibo.m; sourceTree = "<group>"; };
+		FCFAE7DE16358D1300D0AC0C /* TencentOAMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentOAMutableURLRequest.h; sourceTree = "<group>"; };
+		FCFAE7DF16358D1300D0AC0C /* TencentOAMutableURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentOAMutableURLRequest.m; sourceTree = "<group>"; };
+		FCFAE7E016358D1300D0AC0C /* TencentOAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TencentOAuthView.h; sourceTree = "<group>"; };
+		FCFAE7E116358D1300D0AC0C /* TencentOAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TencentOAuthView.m; sourceTree = "<group>"; };
 		FDB495A21520349A00505A99 /* SHKReadability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKReadability.h; sourceTree = "<group>"; };
 		FDB495A31520349A00505A99 /* SHKReadability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKReadability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1617,6 +1771,12 @@
 		43A536C011DBE3B9004A1712 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FCFAE77F16358D1200D0AC0C /* Douban */,
+				FCFAE78216358D1200D0AC0C /* NetEase Weibo */,
+				FCFAE78516358D1200D0AC0C /* Plurk */,
+				FCFAE78816358D1200D0AC0C /* Renren */,
+				FCFAE7D816358D1300D0AC0C /* Sina Weibo */,
+				FCFAE7DB16358D1300D0AC0C /* Tencent Weibo */,
 				7A16F3AC16134A5D0019645D /* Instagram */,
 				1A52EDF315CB032B00A737D8 /* Kippt */,
 				7A0F91CB156B9FCE009CB40A /* Delicious */,
@@ -1965,6 +2125,211 @@
 			path = Vkontakte;
 			sourceTree = "<group>";
 		};
+		FCFAE77F16358D1200D0AC0C /* Douban */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE78016358D1200D0AC0C /* SHKDouban.h */,
+				FCFAE78116358D1200D0AC0C /* SHKDouban.m */,
+			);
+			path = Douban;
+			sourceTree = "<group>";
+		};
+		FCFAE78216358D1200D0AC0C /* NetEase Weibo */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE78316358D1200D0AC0C /* SHKNetEaseWeibo.h */,
+				FCFAE78416358D1200D0AC0C /* SHKNetEaseWeibo.m */,
+			);
+			path = "NetEase Weibo";
+			sourceTree = "<group>";
+		};
+		FCFAE78516358D1200D0AC0C /* Plurk */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE78616358D1200D0AC0C /* SHKPlurk.h */,
+				FCFAE78716358D1200D0AC0C /* SHKPlurk.m */,
+			);
+			path = Plurk;
+			sourceTree = "<group>";
+		};
+		FCFAE78816358D1200D0AC0C /* Renren */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE78916358D1200D0AC0C /* RRConnect */,
+				FCFAE7D616358D1300D0AC0C /* SHKRenRen.h */,
+				FCFAE7D716358D1300D0AC0C /* SHKRenRen.m */,
+			);
+			path = Renren;
+			sourceTree = "<group>";
+		};
+		FCFAE78916358D1200D0AC0C /* RRConnect */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE78A16358D1200D0AC0C /* Renren */,
+			);
+			path = RRConnect;
+			sourceTree = "<group>";
+		};
+		FCFAE78A16358D1200D0AC0C /* Renren */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE78B16358D1200D0AC0C /* Error */,
+				FCFAE78E16358D1200D0AC0C /* Images */,
+				FCFAE79B16358D1200D0AC0C /* Renren.h */,
+				FCFAE79C16358D1200D0AC0C /* Renren.m */,
+				FCFAE79D16358D1200D0AC0C /* RequestParam */,
+				FCFAE7AE16358D1200D0AC0C /* ResponseItem */,
+				FCFAE7BB16358D1200D0AC0C /* ROConnect.h */,
+				FCFAE7BC16358D1200D0AC0C /* RODialog.h */,
+				FCFAE7BD16358D1200D0AC0C /* RODialog.m */,
+				FCFAE7BE16358D1200D0AC0C /* RORequest.h */,
+				FCFAE7BF16358D1200D0AC0C /* RORequest.m */,
+				FCFAE7C016358D1200D0AC0C /* ROResponse.h */,
+				FCFAE7C116358D1200D0AC0C /* ROResponse.m */,
+				FCFAE7C216358D1200D0AC0C /* Sample UI */,
+				FCFAE7CC16358D1200D0AC0C /* Tools */,
+			);
+			path = Renren;
+			sourceTree = "<group>";
+		};
+		FCFAE78B16358D1200D0AC0C /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE78C16358D1200D0AC0C /* ROError.h */,
+				FCFAE78D16358D1200D0AC0C /* ROError.m */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		FCFAE78E16358D1200D0AC0C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE78F16358D1200D0AC0C /* bottom-bar.png */,
+				FCFAE79016358D1200D0AC0C /* bottom-bar@2x.png */,
+				FCFAE79116358D1200D0AC0C /* head-frame.png */,
+				FCFAE79216358D1200D0AC0C /* head-frame@2x.png */,
+				FCFAE79316358D1200D0AC0C /* input-frame.png */,
+				FCFAE79416358D1200D0AC0C /* input-frame@2x.png */,
+				FCFAE79516358D1200D0AC0C /* photo-frame.png */,
+				FCFAE79616358D1200D0AC0C /* photo-frame@2x.png */,
+				FCFAE79716358D1200D0AC0C /* renren-logo-top-bar.png */,
+				FCFAE79816358D1200D0AC0C /* renren-logo-top-bar@2x.png */,
+				FCFAE79916358D1200D0AC0C /* small-button-normal.png */,
+				FCFAE79A16358D1200D0AC0C /* small-button-normal@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		FCFAE79D16358D1200D0AC0C /* RequestParam */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE79E16358D1200D0AC0C /* ROAlbumsInfoRequestParam.h */,
+				FCFAE79F16358D1200D0AC0C /* ROAlbumsInfoRequestParam.m */,
+				FCFAE7A016358D1200D0AC0C /* ROCreateAlbumRequestParam.h */,
+				FCFAE7A116358D1200D0AC0C /* ROCreateAlbumRequestParam.m */,
+				FCFAE7A216358D1200D0AC0C /* ROGetFriendsInfoRequestParam.h */,
+				FCFAE7A316358D1200D0AC0C /* ROGetFriendsInfoRequestParam.m */,
+				FCFAE7A416358D1200D0AC0C /* ROGetFriendsRequestParam.h */,
+				FCFAE7A516358D1200D0AC0C /* ROGetFriendsRequestParam.m */,
+				FCFAE7A616358D1200D0AC0C /* ROPasswordFlowRequestParam.h */,
+				FCFAE7A716358D1200D0AC0C /* ROPasswordFlowRequestParam.m */,
+				FCFAE7A816358D1200D0AC0C /* ROPublishPhotoRequestParam.h */,
+				FCFAE7A916358D1200D0AC0C /* ROPublishPhotoRequestParam.m */,
+				FCFAE7AA16358D1200D0AC0C /* RORequestParam.h */,
+				FCFAE7AB16358D1200D0AC0C /* RORequestParam.m */,
+				FCFAE7AC16358D1200D0AC0C /* ROUserInfoRequestParam.h */,
+				FCFAE7AD16358D1200D0AC0C /* ROUserInfoRequestParam.m */,
+			);
+			path = RequestParam;
+			sourceTree = "<group>";
+		};
+		FCFAE7AE16358D1200D0AC0C /* ResponseItem */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7AF16358D1200D0AC0C /* ROAlbumResponseltem.h */,
+				FCFAE7B016358D1200D0AC0C /* ROAlbumResponseltem.m */,
+				FCFAE7B116358D1200D0AC0C /* ROCreateAlbumResponseItem.h */,
+				FCFAE7B216358D1200D0AC0C /* ROCreateAlbumResponseItem.m */,
+				FCFAE7B316358D1200D0AC0C /* ROFriendResponseItem.h */,
+				FCFAE7B416358D1200D0AC0C /* ROFriendResponseItem.m */,
+				FCFAE7B516358D1200D0AC0C /* ROPublishPhotoResponseItem.h */,
+				FCFAE7B616358D1200D0AC0C /* ROPublishPhotoResponseItem.m */,
+				FCFAE7B716358D1200D0AC0C /* ROResponseItem.h */,
+				FCFAE7B816358D1200D0AC0C /* ROResponseItem.m */,
+				FCFAE7B916358D1200D0AC0C /* ROUserResponseItem.h */,
+				FCFAE7BA16358D1200D0AC0C /* ROUserResponseItem.m */,
+			);
+			path = ResponseItem;
+			sourceTree = "<group>";
+		};
+		FCFAE7C216358D1200D0AC0C /* Sample UI */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7C316358D1200D0AC0C /* RODialogModel.h */,
+				FCFAE7C416358D1200D0AC0C /* RODialogModel.m */,
+				FCFAE7C516358D1200D0AC0C /* RODialogView.h */,
+				FCFAE7C616358D1200D0AC0C /* RODialogView.m */,
+				FCFAE7C716358D1200D0AC0C /* UploadPhotoDialog */,
+			);
+			path = "Sample UI";
+			sourceTree = "<group>";
+		};
+		FCFAE7C716358D1200D0AC0C /* UploadPhotoDialog */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7C816358D1200D0AC0C /* ROPublishPhotoDialogModel.h */,
+				FCFAE7C916358D1200D0AC0C /* ROPublishPhotoDialogModel.m */,
+				FCFAE7CA16358D1200D0AC0C /* ROPublishPhotoInternal.h */,
+				FCFAE7CB16358D1200D0AC0C /* ROPublishPhotoInternal.m */,
+			);
+			path = UploadPhotoDialog;
+			sourceTree = "<group>";
+		};
+		FCFAE7CC16358D1200D0AC0C /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7CD16358D1200D0AC0C /* ROUtility.h */,
+				FCFAE7CE16358D1200D0AC0C /* ROUtility.m */,
+				FCFAE7CF16358D1200D0AC0C /* UI */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		FCFAE7CF16358D1200D0AC0C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7D016358D1200D0AC0C /* ROCloseButton.h */,
+				FCFAE7D116358D1300D0AC0C /* ROCloseButton.m */,
+				FCFAE7D216358D1300D0AC0C /* ROGlobalStyle.h */,
+				FCFAE7D316358D1300D0AC0C /* ROGlobalStyle.m */,
+				FCFAE7D416358D1300D0AC0C /* ROImageView.h */,
+				FCFAE7D516358D1300D0AC0C /* ROImageView.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		FCFAE7D816358D1300D0AC0C /* Sina Weibo */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7D916358D1300D0AC0C /* SHKSinaWeibo.h */,
+				FCFAE7DA16358D1300D0AC0C /* SHKSinaWeibo.m */,
+			);
+			path = "Sina Weibo";
+			sourceTree = "<group>";
+		};
+		FCFAE7DB16358D1300D0AC0C /* Tencent Weibo */ = {
+			isa = PBXGroup;
+			children = (
+				FCFAE7DC16358D1300D0AC0C /* SHKTencentWeibo.h */,
+				FCFAE7DD16358D1300D0AC0C /* SHKTencentWeibo.m */,
+				FCFAE7DE16358D1300D0AC0C /* TencentOAMutableURLRequest.h */,
+				FCFAE7DF16358D1300D0AC0C /* TencentOAMutableURLRequest.m */,
+				FCFAE7E016358D1300D0AC0C /* TencentOAuthView.h */,
+				FCFAE7E116358D1300D0AC0C /* TencentOAuthView.m */,
+			);
+			path = "Tencent Weibo";
+			sourceTree = "<group>";
+		};
 		FDB495A11520349A00505A99 /* Readability */ = {
 			isa = PBXGroup;
 			children = (
@@ -2148,6 +2513,42 @@
 				7ABCDBB0157757D1003BBFFD /* SHKFormFieldCellOptionPicker.h in Headers */,
 				7A4CAA171577BEFA0010E6B3 /* SHKFormFieldCell_PrivateProperties.h in Headers */,
 				7A16F3B016134A790019645D /* SHKInstagram.h in Headers */,
+				FCFAE7E216358D1300D0AC0C /* SHKDouban.h in Headers */,
+				FCFAE7E416358D1300D0AC0C /* SHKNetEaseWeibo.h in Headers */,
+				FCFAE7E616358D1300D0AC0C /* SHKPlurk.h in Headers */,
+				FCFAE7E816358D1300D0AC0C /* ROError.h in Headers */,
+				FCFAE7EA16358D1300D0AC0C /* Renren.h in Headers */,
+				FCFAE7EC16358D1300D0AC0C /* ROAlbumsInfoRequestParam.h in Headers */,
+				FCFAE7EE16358D1300D0AC0C /* ROCreateAlbumRequestParam.h in Headers */,
+				FCFAE7F016358D1300D0AC0C /* ROGetFriendsInfoRequestParam.h in Headers */,
+				FCFAE7F216358D1300D0AC0C /* ROGetFriendsRequestParam.h in Headers */,
+				FCFAE7F416358D1300D0AC0C /* ROPasswordFlowRequestParam.h in Headers */,
+				FCFAE7F616358D1300D0AC0C /* ROPublishPhotoRequestParam.h in Headers */,
+				FCFAE7F816358D1300D0AC0C /* RORequestParam.h in Headers */,
+				FCFAE7FA16358D1300D0AC0C /* ROUserInfoRequestParam.h in Headers */,
+				FCFAE7FC16358D1300D0AC0C /* ROAlbumResponseltem.h in Headers */,
+				FCFAE7FE16358D1300D0AC0C /* ROCreateAlbumResponseItem.h in Headers */,
+				FCFAE80016358D1300D0AC0C /* ROFriendResponseItem.h in Headers */,
+				FCFAE80216358D1300D0AC0C /* ROPublishPhotoResponseItem.h in Headers */,
+				FCFAE80416358D1300D0AC0C /* ROResponseItem.h in Headers */,
+				FCFAE80616358D1300D0AC0C /* ROUserResponseItem.h in Headers */,
+				FCFAE80816358D1300D0AC0C /* ROConnect.h in Headers */,
+				FCFAE80916358D1300D0AC0C /* RODialog.h in Headers */,
+				FCFAE80B16358D1300D0AC0C /* RORequest.h in Headers */,
+				FCFAE80D16358D1300D0AC0C /* ROResponse.h in Headers */,
+				FCFAE80F16358D1300D0AC0C /* RODialogModel.h in Headers */,
+				FCFAE81116358D1300D0AC0C /* RODialogView.h in Headers */,
+				FCFAE81316358D1300D0AC0C /* ROPublishPhotoDialogModel.h in Headers */,
+				FCFAE81516358D1300D0AC0C /* ROPublishPhotoInternal.h in Headers */,
+				FCFAE81716358D1300D0AC0C /* ROUtility.h in Headers */,
+				FCFAE81916358D1300D0AC0C /* ROCloseButton.h in Headers */,
+				FCFAE81B16358D1300D0AC0C /* ROGlobalStyle.h in Headers */,
+				FCFAE81D16358D1300D0AC0C /* ROImageView.h in Headers */,
+				FCFAE81F16358D1300D0AC0C /* SHKRenRen.h in Headers */,
+				FCFAE82116358D1300D0AC0C /* SHKSinaWeibo.h in Headers */,
+				FCFAE82316358D1300D0AC0C /* SHKTencentWeibo.h in Headers */,
+				FCFAE82516358D1300D0AC0C /* TencentOAMutableURLRequest.h in Headers */,
+				FCFAE82716358D1300D0AC0C /* TencentOAuthView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3463,6 +3864,41 @@
 				7AB8050F15AC7AAF004FB430 /* ENOAuthViewController.m in Sources */,
 				7AB8051015AC7BC9004FB430 /* GTMNSString+HTML.m in Sources */,
 				7A16F3B216134A790019645D /* SHKInstagram.m in Sources */,
+				FCFAE7E316358D1300D0AC0C /* SHKDouban.m in Sources */,
+				FCFAE7E516358D1300D0AC0C /* SHKNetEaseWeibo.m in Sources */,
+				FCFAE7E716358D1300D0AC0C /* SHKPlurk.m in Sources */,
+				FCFAE7E916358D1300D0AC0C /* ROError.m in Sources */,
+				FCFAE7EB16358D1300D0AC0C /* Renren.m in Sources */,
+				FCFAE7ED16358D1300D0AC0C /* ROAlbumsInfoRequestParam.m in Sources */,
+				FCFAE7EF16358D1300D0AC0C /* ROCreateAlbumRequestParam.m in Sources */,
+				FCFAE7F116358D1300D0AC0C /* ROGetFriendsInfoRequestParam.m in Sources */,
+				FCFAE7F316358D1300D0AC0C /* ROGetFriendsRequestParam.m in Sources */,
+				FCFAE7F516358D1300D0AC0C /* ROPasswordFlowRequestParam.m in Sources */,
+				FCFAE7F716358D1300D0AC0C /* ROPublishPhotoRequestParam.m in Sources */,
+				FCFAE7F916358D1300D0AC0C /* RORequestParam.m in Sources */,
+				FCFAE7FB16358D1300D0AC0C /* ROUserInfoRequestParam.m in Sources */,
+				FCFAE7FD16358D1300D0AC0C /* ROAlbumResponseltem.m in Sources */,
+				FCFAE7FF16358D1300D0AC0C /* ROCreateAlbumResponseItem.m in Sources */,
+				FCFAE80116358D1300D0AC0C /* ROFriendResponseItem.m in Sources */,
+				FCFAE80316358D1300D0AC0C /* ROPublishPhotoResponseItem.m in Sources */,
+				FCFAE80516358D1300D0AC0C /* ROResponseItem.m in Sources */,
+				FCFAE80716358D1300D0AC0C /* ROUserResponseItem.m in Sources */,
+				FCFAE80A16358D1300D0AC0C /* RODialog.m in Sources */,
+				FCFAE80C16358D1300D0AC0C /* RORequest.m in Sources */,
+				FCFAE80E16358D1300D0AC0C /* ROResponse.m in Sources */,
+				FCFAE81016358D1300D0AC0C /* RODialogModel.m in Sources */,
+				FCFAE81216358D1300D0AC0C /* RODialogView.m in Sources */,
+				FCFAE81416358D1300D0AC0C /* ROPublishPhotoDialogModel.m in Sources */,
+				FCFAE81616358D1300D0AC0C /* ROPublishPhotoInternal.m in Sources */,
+				FCFAE81816358D1300D0AC0C /* ROUtility.m in Sources */,
+				FCFAE81A16358D1300D0AC0C /* ROCloseButton.m in Sources */,
+				FCFAE81C16358D1300D0AC0C /* ROGlobalStyle.m in Sources */,
+				FCFAE81E16358D1300D0AC0C /* ROImageView.m in Sources */,
+				FCFAE82016358D1300D0AC0C /* SHKRenRen.m in Sources */,
+				FCFAE82216358D1300D0AC0C /* SHKSinaWeibo.m in Sources */,
+				FCFAE82416358D1300D0AC0C /* SHKTencentWeibo.m in Sources */,
+				FCFAE82616358D1300D0AC0C /* TencentOAMutableURLRequest.m in Sources */,
+				FCFAE82816358D1300D0AC0C /* TencentOAuthView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
