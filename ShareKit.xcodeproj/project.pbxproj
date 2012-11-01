@@ -510,6 +510,67 @@
 		7AEE0450160E1DC500FEC06E /* SHKReadItLater.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A536E611DBE3B9004A1712 /* SHKReadItLater.m */; };
 		7AEE0451160E1DD200FEC06E /* SHKTumblr.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C91DF411EBAE4800F31FAE /* SHKTumblr.m */; };
 		C0D3077B147BDC8100E74EA3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D3077A147BDC8100E74EA3 /* CoreLocation.framework */; };
+		FC20D8151642DAC8008F0844 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B4156CD8A70011E15F /* Base64Transcoder.h */; };
+		FC20D8161642DAC8008F0844 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B6156CD8A70011E15F /* hmac.h */; };
+		FC20D8171642DAC8008F0844 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B8156CD8A70011E15F /* sha1.h */; };
+		FC20D8181642DAC8008F0844 /* SHKFormFieldCellText.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A164DC0157662ED00D55DB4 /* SHKFormFieldCellText.h */; };
+		FC20D8191642DAC8008F0844 /* SHKFormFieldCellSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABCDBA71577528B003BBFFD /* SHKFormFieldCellSwitch.h */; };
+		FC20D81A1642DAC8008F0844 /* SHKFormFieldCellOptionPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABCDBAE157757D1003BBFFD /* SHKFormFieldCellOptionPicker.h */; };
+		FC20D81B1642DAC8008F0844 /* SHKFormFieldCell_PrivateProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4CAA161577BEF90010E6B3 /* SHKFormFieldCell_PrivateProperties.h */; };
+		FC20D8201642DC17008F0844 /* ROError.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE78D16358D1200D0AC0C /* ROError.m */; };
+		FC20D8211642DC1A008F0844 /* Renren.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79C16358D1200D0AC0C /* Renren.m */; };
+		FC20D8221642DC2A008F0844 /* ROAlbumsInfoRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE79F16358D1200D0AC0C /* ROAlbumsInfoRequestParam.m */; };
+		FC20D8231642DC2A008F0844 /* ROCreateAlbumRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A116358D1200D0AC0C /* ROCreateAlbumRequestParam.m */; };
+		FC20D8241642DC2A008F0844 /* ROGetFriendsInfoRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A316358D1200D0AC0C /* ROGetFriendsInfoRequestParam.m */; };
+		FC20D8251642DC2A008F0844 /* ROGetFriendsRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A516358D1200D0AC0C /* ROGetFriendsRequestParam.m */; };
+		FC20D8261642DC2A008F0844 /* ROPasswordFlowRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A716358D1200D0AC0C /* ROPasswordFlowRequestParam.m */; };
+		FC20D8271642DC2A008F0844 /* ROPublishPhotoRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7A916358D1200D0AC0C /* ROPublishPhotoRequestParam.m */; };
+		FC20D8281642DC2A008F0844 /* RORequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7AB16358D1200D0AC0C /* RORequestParam.m */; };
+		FC20D8291642DC2A008F0844 /* ROUserInfoRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7AD16358D1200D0AC0C /* ROUserInfoRequestParam.m */; };
+		FC20D82A1642DC33008F0844 /* ROAlbumResponseltem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B016358D1200D0AC0C /* ROAlbumResponseltem.m */; };
+		FC20D82B1642DC33008F0844 /* ROCreateAlbumResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B216358D1200D0AC0C /* ROCreateAlbumResponseItem.m */; };
+		FC20D82C1642DC33008F0844 /* ROFriendResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B416358D1200D0AC0C /* ROFriendResponseItem.m */; };
+		FC20D82D1642DC33008F0844 /* ROPublishPhotoResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B616358D1200D0AC0C /* ROPublishPhotoResponseItem.m */; };
+		FC20D82E1642DC33008F0844 /* ROResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7B816358D1200D0AC0C /* ROResponseItem.m */; };
+		FC20D82F1642DC33008F0844 /* ROUserResponseItem.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7BA16358D1200D0AC0C /* ROUserResponseItem.m */; };
+		FC20D8301642DC3D008F0844 /* RODialog.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7BD16358D1200D0AC0C /* RODialog.m */; };
+		FC20D8311642DC3D008F0844 /* RORequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7BF16358D1200D0AC0C /* RORequest.m */; };
+		FC20D8321642DC3D008F0844 /* ROResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7C116358D1200D0AC0C /* ROResponse.m */; };
+		FC20D8331642DC43008F0844 /* ROUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7CE16358D1200D0AC0C /* ROUtility.m */; };
+		FC20D8341642DC46008F0844 /* SHKRenRen.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7D716358D1300D0AC0C /* SHKRenRen.m */; };
+		FC20D8351642DC4C008F0844 /* RODialogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7C416358D1200D0AC0C /* RODialogModel.m */; };
+		FC20D8361642DC4C008F0844 /* RODialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7C616358D1200D0AC0C /* RODialogView.m */; };
+		FC20D83C1642DC5A008F0844 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B4156CD8A70011E15F /* Base64Transcoder.h */; };
+		FC20D83D1642DC5A008F0844 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B6156CD8A70011E15F /* hmac.h */; };
+		FC20D83E1642DC5A008F0844 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B8156CD8A70011E15F /* sha1.h */; };
+		FC20D83F1642DC5A008F0844 /* SHKFormFieldCellText.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A164DC0157662ED00D55DB4 /* SHKFormFieldCellText.h */; };
+		FC20D8401642DC5A008F0844 /* SHKFormFieldCellSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABCDBA71577528B003BBFFD /* SHKFormFieldCellSwitch.h */; };
+		FC20D8411642DC5A008F0844 /* SHKFormFieldCellOptionPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABCDBAE157757D1003BBFFD /* SHKFormFieldCellOptionPicker.h */; };
+		FC20D8421642DC5A008F0844 /* SHKFormFieldCell_PrivateProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4CAA161577BEF90010E6B3 /* SHKFormFieldCell_PrivateProperties.h */; };
+		FC7E27AD1642DC90004AC39D /* SHKSinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7DA16358D1300D0AC0C /* SHKSinaWeibo.m */; };
+		FC7E27B31642DC93004AC39D /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B4156CD8A70011E15F /* Base64Transcoder.h */; };
+		FC7E27B41642DC93004AC39D /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B6156CD8A70011E15F /* hmac.h */; };
+		FC7E27B51642DC93004AC39D /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B8156CD8A70011E15F /* sha1.h */; };
+		FC7E27B61642DC93004AC39D /* SHKFormFieldCellText.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A164DC0157662ED00D55DB4 /* SHKFormFieldCellText.h */; };
+		FC7E27B71642DC93004AC39D /* SHKFormFieldCellSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABCDBA71577528B003BBFFD /* SHKFormFieldCellSwitch.h */; };
+		FC7E27B81642DC93004AC39D /* SHKFormFieldCellOptionPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABCDBAE157757D1003BBFFD /* SHKFormFieldCellOptionPicker.h */; };
+		FC7E27B91642DC93004AC39D /* SHKFormFieldCell_PrivateProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4CAA161577BEF90010E6B3 /* SHKFormFieldCell_PrivateProperties.h */; };
+		FC7E27BE1642DCA7004AC39D /* SHKTencentWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7DD16358D1300D0AC0C /* SHKTencentWeibo.m */; };
+		FC7E27BF1642DCA7004AC39D /* TencentOAMutableURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7DF16358D1300D0AC0C /* TencentOAMutableURLRequest.m */; };
+		FC7E27C01642DCA7004AC39D /* TencentOAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7E116358D1300D0AC0C /* TencentOAuthView.m */; };
+		FC7E27ED1642E3DB004AC39D /* ROPublishPhotoDialogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7C916358D1200D0AC0C /* ROPublishPhotoDialogModel.m */; };
+		FC7E27EE1642E3DB004AC39D /* ROPublishPhotoInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7CB16358D1200D0AC0C /* ROPublishPhotoInternal.m */; };
+		FC7E27EF1642E3E5004AC39D /* ROCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7D116358D1300D0AC0C /* ROCloseButton.m */; };
+		FC7E27F01642E3E5004AC39D /* ROGlobalStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7D316358D1300D0AC0C /* ROGlobalStyle.m */; };
+		FC7E27F11642E3E5004AC39D /* ROImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE7D516358D1300D0AC0C /* ROImageView.m */; };
+		FC7E27F91642E429004AC39D /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B4156CD8A70011E15F /* Base64Transcoder.h */; };
+		FC7E27FA1642E429004AC39D /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B6156CD8A70011E15F /* hmac.h */; };
+		FC7E27FB1642E429004AC39D /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A26E5B8156CD8A70011E15F /* sha1.h */; };
+		FC7E27FC1642E429004AC39D /* SHKFormFieldCellText.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A164DC0157662ED00D55DB4 /* SHKFormFieldCellText.h */; };
+		FC7E27FD1642E429004AC39D /* SHKFormFieldCellSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABCDBA71577528B003BBFFD /* SHKFormFieldCellSwitch.h */; };
+		FC7E27FE1642E429004AC39D /* SHKFormFieldCellOptionPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ABCDBAE157757D1003BBFFD /* SHKFormFieldCellOptionPicker.h */; };
+		FC7E27FF1642E429004AC39D /* SHKFormFieldCell_PrivateProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4CAA161577BEF90010E6B3 /* SHKFormFieldCell_PrivateProperties.h */; };
+		FC7E28041642E44A004AC39D /* SHKNetEaseWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE78416358D1200D0AC0C /* SHKNetEaseWeibo.m */; };
 		FCFAE7E216358D1300D0AC0C /* SHKDouban.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE78016358D1200D0AC0C /* SHKDouban.h */; };
 		FCFAE7E316358D1300D0AC0C /* SHKDouban.m in Sources */ = {isa = PBXBuildFile; fileRef = FCFAE78116358D1200D0AC0C /* SHKDouban.m */; };
 		FCFAE7E416358D1300D0AC0C /* SHKNetEaseWeibo.h in Headers */ = {isa = PBXBuildFile; fileRef = FCFAE78316358D1200D0AC0C /* SHKNetEaseWeibo.h */; };
@@ -924,6 +985,10 @@
 		FA5AA3B7149625460064DB24 /* SHKVkontakteOAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKVkontakteOAuthView.h; sourceTree = "<group>"; };
 		FA5AA3BA149625460064DB24 /* SHKVkontakte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKVkontakte.m; sourceTree = "<group>"; };
 		FA5AA3BB149625460064DB24 /* SHKVkontakte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKVkontakte.h; sourceTree = "<group>"; };
+		FC20D81F1642DAC8008F0844 /* libRenRen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenRen.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC20D8461642DC5A008F0844 /* libSina Weibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSina Weibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC7E27BD1642DC93004AC39D /* libTencent Weibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTencent Weibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC7E28031642E429004AC39D /* libNetEase Weibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libNetEase Weibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFAE78016358D1200D0AC0C /* SHKDouban.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKDouban.h; sourceTree = "<group>"; };
 		FCFAE78116358D1200D0AC0C /* SHKDouban.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKDouban.m; sourceTree = "<group>"; };
 		FCFAE78316358D1200D0AC0C /* SHKNetEaseWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKNetEaseWeibo.h; sourceTree = "<group>"; };
@@ -1267,6 +1332,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FC20D8131642DAC8008F0844 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC20D83A1642DC5A008F0844 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC7E27B11642DC93004AC39D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC7E27F71642E429004AC39D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1317,6 +1410,10 @@
 				7AEE043D160E1D5B00FEC06E /* libTumblr.a */,
 				7A16F37E161340DD0019645D /* libOAuth.a */,
 				7A16F3C216134A890019645D /* libInstagram.a */,
+				FC20D81F1642DAC8008F0844 /* libRenRen.a */,
+				FC20D8461642DC5A008F0844 /* libSina Weibo.a */,
+				FC7E27BD1642DC93004AC39D /* libTencent Weibo.a */,
+				FC7E28031642E429004AC39D /* libNetEase Weibo.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2832,6 +2929,62 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FC20D8141642DAC8008F0844 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC20D8151642DAC8008F0844 /* Base64Transcoder.h in Headers */,
+				FC20D8161642DAC8008F0844 /* hmac.h in Headers */,
+				FC20D8171642DAC8008F0844 /* sha1.h in Headers */,
+				FC20D8181642DAC8008F0844 /* SHKFormFieldCellText.h in Headers */,
+				FC20D8191642DAC8008F0844 /* SHKFormFieldCellSwitch.h in Headers */,
+				FC20D81A1642DAC8008F0844 /* SHKFormFieldCellOptionPicker.h in Headers */,
+				FC20D81B1642DAC8008F0844 /* SHKFormFieldCell_PrivateProperties.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC20D83B1642DC5A008F0844 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC20D83C1642DC5A008F0844 /* Base64Transcoder.h in Headers */,
+				FC20D83D1642DC5A008F0844 /* hmac.h in Headers */,
+				FC20D83E1642DC5A008F0844 /* sha1.h in Headers */,
+				FC20D83F1642DC5A008F0844 /* SHKFormFieldCellText.h in Headers */,
+				FC20D8401642DC5A008F0844 /* SHKFormFieldCellSwitch.h in Headers */,
+				FC20D8411642DC5A008F0844 /* SHKFormFieldCellOptionPicker.h in Headers */,
+				FC20D8421642DC5A008F0844 /* SHKFormFieldCell_PrivateProperties.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC7E27B21642DC93004AC39D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC7E27B31642DC93004AC39D /* Base64Transcoder.h in Headers */,
+				FC7E27B41642DC93004AC39D /* hmac.h in Headers */,
+				FC7E27B51642DC93004AC39D /* sha1.h in Headers */,
+				FC7E27B61642DC93004AC39D /* SHKFormFieldCellText.h in Headers */,
+				FC7E27B71642DC93004AC39D /* SHKFormFieldCellSwitch.h in Headers */,
+				FC7E27B81642DC93004AC39D /* SHKFormFieldCellOptionPicker.h in Headers */,
+				FC7E27B91642DC93004AC39D /* SHKFormFieldCell_PrivateProperties.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC7E27F81642E429004AC39D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC7E27F91642E429004AC39D /* Base64Transcoder.h in Headers */,
+				FC7E27FA1642E429004AC39D /* hmac.h in Headers */,
+				FC7E27FB1642E429004AC39D /* sha1.h in Headers */,
+				FC7E27FC1642E429004AC39D /* SHKFormFieldCellText.h in Headers */,
+				FC7E27FD1642E429004AC39D /* SHKFormFieldCellSwitch.h in Headers */,
+				FC7E27FE1642E429004AC39D /* SHKFormFieldCellOptionPicker.h in Headers */,
+				FC7E27FF1642E429004AC39D /* SHKFormFieldCell_PrivateProperties.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -3432,6 +3585,74 @@
 			productReference = 7AEE043D160E1D5B00FEC06E /* libTumblr.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		FC20D8101642DAC8008F0844 /* RenRen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC20D81C1642DAC8008F0844 /* Build configuration list for PBXNativeTarget "RenRen" */;
+			buildPhases = (
+				FC20D8111642DAC8008F0844 /* Sources */,
+				FC20D8131642DAC8008F0844 /* Frameworks */,
+				FC20D8141642DAC8008F0844 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RenRen;
+			productName = ShareKitLibrary;
+			productReference = FC20D81F1642DAC8008F0844 /* libRenRen.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FC20D8371642DC5A008F0844 /* Sina Weibo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC20D8431642DC5A008F0844 /* Build configuration list for PBXNativeTarget "Sina Weibo" */;
+			buildPhases = (
+				FC20D8381642DC5A008F0844 /* Sources */,
+				FC20D83A1642DC5A008F0844 /* Frameworks */,
+				FC20D83B1642DC5A008F0844 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Sina Weibo";
+			productName = ShareKitLibrary;
+			productReference = FC20D8461642DC5A008F0844 /* libSina Weibo.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FC7E27AE1642DC93004AC39D /* Tencent Weibo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC7E27BA1642DC93004AC39D /* Build configuration list for PBXNativeTarget "Tencent Weibo" */;
+			buildPhases = (
+				FC7E27AF1642DC93004AC39D /* Sources */,
+				FC7E27B11642DC93004AC39D /* Frameworks */,
+				FC7E27B21642DC93004AC39D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tencent Weibo";
+			productName = ShareKitLibrary;
+			productReference = FC7E27BD1642DC93004AC39D /* libTencent Weibo.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FC7E27F21642E429004AC39D /* NetEase Weibo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC7E28001642E429004AC39D /* Build configuration list for PBXNativeTarget "NetEase Weibo" */;
+			buildPhases = (
+				FC7E27F31642E429004AC39D /* Sources */,
+				FC7E27F71642E429004AC39D /* Frameworks */,
+				FC7E27F81642E429004AC39D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NetEase Weibo";
+			productName = ShareKitLibrary;
+			productReference = FC7E28031642E429004AC39D /* libNetEase Weibo.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -3498,6 +3719,10 @@
 				7AEE041E160E1D5A00FEC06E /* Read It Later */,
 				7AEE042E160E1D5B00FEC06E /* Tumblr */,
 				7A1AFD2B160E14340086B98A /* Twitter */,
+				FC20D8101642DAC8008F0844 /* RenRen */,
+				FC20D8371642DC5A008F0844 /* Sina Weibo */,
+				FC7E27AE1642DC93004AC39D /* Tencent Weibo */,
+				FC7E27F21642E429004AC39D /* NetEase Weibo */,
 			);
 		};
 /* End PBXProject section */
@@ -4053,6 +4278,67 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AEE0451160E1DD200FEC06E /* SHKTumblr.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC20D8111642DAC8008F0844 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC20D8201642DC17008F0844 /* ROError.m in Sources */,
+				FC20D8211642DC1A008F0844 /* Renren.m in Sources */,
+				FC20D8221642DC2A008F0844 /* ROAlbumsInfoRequestParam.m in Sources */,
+				FC20D8231642DC2A008F0844 /* ROCreateAlbumRequestParam.m in Sources */,
+				FC20D8241642DC2A008F0844 /* ROGetFriendsInfoRequestParam.m in Sources */,
+				FC20D8251642DC2A008F0844 /* ROGetFriendsRequestParam.m in Sources */,
+				FC20D8261642DC2A008F0844 /* ROPasswordFlowRequestParam.m in Sources */,
+				FC20D8271642DC2A008F0844 /* ROPublishPhotoRequestParam.m in Sources */,
+				FC20D8281642DC2A008F0844 /* RORequestParam.m in Sources */,
+				FC20D8291642DC2A008F0844 /* ROUserInfoRequestParam.m in Sources */,
+				FC20D82A1642DC33008F0844 /* ROAlbumResponseltem.m in Sources */,
+				FC20D82B1642DC33008F0844 /* ROCreateAlbumResponseItem.m in Sources */,
+				FC20D82C1642DC33008F0844 /* ROFriendResponseItem.m in Sources */,
+				FC20D82D1642DC33008F0844 /* ROPublishPhotoResponseItem.m in Sources */,
+				FC20D82E1642DC33008F0844 /* ROResponseItem.m in Sources */,
+				FC20D82F1642DC33008F0844 /* ROUserResponseItem.m in Sources */,
+				FC20D8301642DC3D008F0844 /* RODialog.m in Sources */,
+				FC20D8311642DC3D008F0844 /* RORequest.m in Sources */,
+				FC20D8321642DC3D008F0844 /* ROResponse.m in Sources */,
+				FC20D8331642DC43008F0844 /* ROUtility.m in Sources */,
+				FC20D8341642DC46008F0844 /* SHKRenRen.m in Sources */,
+				FC20D8351642DC4C008F0844 /* RODialogModel.m in Sources */,
+				FC20D8361642DC4C008F0844 /* RODialogView.m in Sources */,
+				FC7E27ED1642E3DB004AC39D /* ROPublishPhotoDialogModel.m in Sources */,
+				FC7E27EE1642E3DB004AC39D /* ROPublishPhotoInternal.m in Sources */,
+				FC7E27EF1642E3E5004AC39D /* ROCloseButton.m in Sources */,
+				FC7E27F01642E3E5004AC39D /* ROGlobalStyle.m in Sources */,
+				FC7E27F11642E3E5004AC39D /* ROImageView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC20D8381642DC5A008F0844 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC7E27AD1642DC90004AC39D /* SHKSinaWeibo.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC7E27AF1642DC93004AC39D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC7E27BE1642DCA7004AC39D /* SHKTencentWeibo.m in Sources */,
+				FC7E27BF1642DCA7004AC39D /* TencentOAMutableURLRequest.m in Sources */,
+				FC7E27C01642DCA7004AC39D /* TencentOAuthView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC7E27F31642E429004AC39D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC7E28041642E44A004AC39D /* SHKNetEaseWeibo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6201,6 +6487,246 @@
 			};
 			name = Release;
 		};
+		FC20D81D1642DAC8008F0844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/ShareKitLibrary.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareKitLibrary/ShareKitLibrary-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = RenRen;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FC20D81E1642DAC8008F0844 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/ShareKitLibrary.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareKitLibrary/ShareKitLibrary-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = RenRen;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC20D8441642DC5A008F0844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/ShareKitLibrary.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareKitLibrary/ShareKitLibrary-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Sina Weibo";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FC20D8451642DC5A008F0844 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/ShareKitLibrary.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareKitLibrary/ShareKitLibrary-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Sina Weibo";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC7E27BB1642DC93004AC39D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/ShareKitLibrary.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareKitLibrary/ShareKitLibrary-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Tencent Weibo";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FC7E27BC1642DC93004AC39D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/ShareKitLibrary.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareKitLibrary/ShareKitLibrary-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "Tencent Weibo";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC7E28011642E429004AC39D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/ShareKitLibrary.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareKitLibrary/ShareKitLibrary-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "NetEase Weibo";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FC7E28021642E429004AC39D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/ShareKitLibrary.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ShareKitLibrary/ShareKitLibrary-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "NetEase Weibo";
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -6524,6 +7050,42 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC20D81C1642DAC8008F0844 /* Build configuration list for PBXNativeTarget "RenRen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC20D81D1642DAC8008F0844 /* Debug */,
+				FC20D81E1642DAC8008F0844 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC20D8431642DC5A008F0844 /* Build configuration list for PBXNativeTarget "Sina Weibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC20D8441642DC5A008F0844 /* Debug */,
+				FC20D8451642DC5A008F0844 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC7E27BA1642DC93004AC39D /* Build configuration list for PBXNativeTarget "Tencent Weibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC7E27BB1642DC93004AC39D /* Debug */,
+				FC7E27BC1642DC93004AC39D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC7E28001642E429004AC39D /* Build configuration list for PBXNativeTarget "NetEase Weibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC7E28011642E429004AC39D /* Debug */,
+				FC7E28021642E429004AC39D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
