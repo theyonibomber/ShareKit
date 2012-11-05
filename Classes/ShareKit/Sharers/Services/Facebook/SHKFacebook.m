@@ -327,10 +327,6 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 	return @"Facebook";
 }
 
-- (void)sendDidCancel {
-
-}
-
 + (BOOL)canShareURL
 {
 	return YES;
@@ -426,7 +422,8 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 	if ((item.shareType == SHKShareTypeURL && item.URL)||
 		(item.shareType == SHKShareTypeText && item.text)||
 		(item.shareType == SHKShareTypeImage && item.image)||
-		item.shareType == SHKShareTypeUserInfo)					// sharekit doesn't use this, I don't know who does
+		item.shareType == SHKShareTypeUserInfo ||
+        item.shareType == SHKShareTypeVideo)					// sharekit doesn't use this, I don't know who does
     {
 		// Ask for publish_actions permissions in context
 		if ([FBSession.activeSession.permissions
@@ -559,6 +556,7 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 															    HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
 																    [self FBRequestHandlerCallback:connection result:result error:error];
 																}];
+		[self.pendingConnections addObject:con];
 	}
 }
 

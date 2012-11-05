@@ -3,10 +3,10 @@
 //
 #import "RORequest.h"
 #import "ROResponse.h"
-#import "JSON.h"
 #import "RORequestParam.h"
 #import "ROError.h"
 #import "ROUtility.h"
+#import "JSONKit.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
@@ -124,9 +124,7 @@ static const NSTimeInterval kTimeoutInterval = 60.0;
 + (id)getRequestSessionKeyWithParams:(NSString *)url {  
 	NSURL* sessionKeyURL = [NSURL URLWithString:url];
 	NSData *data=[NSData dataWithContentsOfURL:sessionKeyURL];
-	NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-	SBJSON *jsonParser = [[SBJSON new] autorelease];
-	id result = [jsonParser objectWithString:responseString];
+	id result = [[JSONDecoder decoder] objectWithData:data];
 	return result;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -282,7 +280,6 @@ static const NSTimeInterval kTimeoutInterval = 60.0;
     
     NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     NSLog(@"Here's the response string: %@", responseString);
-    SBJSON *jsonParser = [[SBJSON new] autorelease];
     if ([responseString isEqualToString:@"true"]) {
         return [NSDictionary dictionaryWithObject:@"true" forKey:@"result"];
     }else if([responseString isEqualToString:@"false"]) {
@@ -293,7 +290,7 @@ static const NSTimeInterval kTimeoutInterval = 60.0;
     }
     
     
-    id result = [jsonParser objectWithString:responseString];
+    id result = [[JSONDecoder decoder] objectWithData:data];
     
     self.responseObject = [self.requestParamObject requestResultToResponse:result];
     self.responseObject.param = self.requestParamObject;
