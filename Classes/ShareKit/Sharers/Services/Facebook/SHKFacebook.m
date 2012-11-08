@@ -160,13 +160,19 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 					 urlSchemeSuffix:SHKCONFIG(facebookLocalAppId)
 				  tokenCacheStrategy:nil] autorelease];
     
-    if (allowLoginUI ||
-        (session.state == FBSessionStateCreatedTokenLoaded)) {
-		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
+    if (allowLoginUI || (session.state == FBSessionStateCreatedTokenLoaded)) {
+
+        if (allowLoginUI) {
+            [[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
+        }
+
         [FBSession setActiveSession:session];
         [session openWithBehavior:FBSessionLoginBehaviorWithFallbackToWebView
 				completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-					[[SHKActivityIndicator currentIndicator] hide];
+                    if (allowLoginUI) {
+					    [[SHKActivityIndicator currentIndicator] hide];
+                    }
+
 					[self sessionStateChanged:session state:state error:error];
 				}];
         result = session.isOpen;
