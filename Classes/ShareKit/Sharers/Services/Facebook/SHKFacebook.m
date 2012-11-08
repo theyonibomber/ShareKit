@@ -164,7 +164,7 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
         (session.state == FBSessionStateCreatedTokenLoaded)) {
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging In...")];
         [FBSession setActiveSession:session];
-        [session openWithBehavior:FBSessionLoginBehaviorWithNoFallbackToWebView
+        [session openWithBehavior:FBSessionLoginBehaviorWithFallbackToWebView
 				completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
 					[[SHKActivityIndicator currentIndicator] hide];
 					[self sessionStateChanged:session state:state error:error];
