@@ -1165,7 +1165,6 @@
 		FA5AA3BA149625460064DB24 /* SHKVkontakte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SHKVkontakte.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FA5AA3BB149625460064DB24 /* SHKVkontakte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKVkontakte.h; sourceTree = "<group>"; };
 		FC20D81F1642DAC8008F0844 /* libRenRen.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRenRen.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC20D8461642DC5A008F0844 /* libSina Weibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libSina Weibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7E27BD1642DC93004AC39D /* libTencent Weibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTencent Weibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7E28031642E429004AC39D /* libNetEase Weibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libNetEase Weibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCFAE78316358D1200D0AC0C /* SHKNetEaseWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKNetEaseWeibo.h; sourceTree = "<group>"; };
@@ -1609,7 +1608,6 @@
 				7A16F37E161340DD0019645D /* libOAuth.a */,
 				7A16F3C216134A890019645D /* libInstagram.a */,
 				FC20D81F1642DAC8008F0844 /* libRenRen.a */,
-				FC20D8461642DC5A008F0844 /* libSina Weibo.a */,
 				FC7E27BD1642DC93004AC39D /* libTencent Weibo.a */,
 				FC7E28031642E429004AC39D /* libNetEase Weibo.a */,
 				AABBECBE162F063F009D46E4 /* libPrint.a */,
@@ -5513,6 +5511,7 @@
 				);
 				PRODUCT_NAME = "Sina Weibo";
 				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
