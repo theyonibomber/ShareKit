@@ -36,18 +36,15 @@
 #import "SHKFormFieldSettings.h"
 #import "UIWebView+SHK.h"
 
-extern NSString * const SHKHideCurrentViewFinishedNotification;
+extern NSString * const SHKSendDidStartNotification;
+extern NSString * const SHKSendDidFinishNotification;
+extern NSString * const SHKSendDidFailWithErrorNotification;
+extern NSString * const SHKSendDidCancelNotification;
+extern NSString * const SHKAuthDidFinishNotification;
 
 @class SHKActionSheet;
 
 @interface SHK : NSObject 
-{
-	UIViewController *currentView;
-	UIViewController *pendingView;
-	BOOL isDismissingView;
-	
-	NSOperationQueue *offlineQueue;
-}
 
 @property (nonatomic, retain) UIViewController *currentView;
 @property (nonatomic, retain) UIViewController *pendingView;
@@ -55,36 +52,37 @@ extern NSString * const SHKHideCurrentViewFinishedNotification;
 
 @property (nonatomic, retain) NSOperationQueue *offlineQueue;
 
-
-
 #pragma mark -
 
 + (SHK *)currentHelper;
 
 + (NSDictionary *)sharersDictionary;
 
-
 #pragma mark -
 #pragma mark View Management
 
 + (void)setRootViewController:(UIViewController *)vc;
 
-//returns current topViewController for classes, which do not use SHK to present their UI
-- (UIViewController *)rootViewForCustomUIDisplay;
+/* original show method, wraps the view to UINavigationViewController prior presenting, if not already a UINavigationViewController */
 - (void)showViewController:(UIViewController *)vc;
+/* displays sharers with custom UI - without wrapping */
+- (void)showStandaloneViewController:(UIViewController *)vc;
+/* returns current top view controller to display UI from */
+- (UIViewController *)rootViewForUIDisplay;
+
 - (void)hideCurrentViewControllerAnimated:(BOOL)animated;
 - (void)viewWasDismissed;
 
 + (UIBarStyle)barStyle;
 + (UIModalPresentationStyle)modalPresentationStyleForController:(UIViewController *)controller;
-+ (UIModalTransitionStyle)modalTransitionStyle;
++ (UIModalTransitionStyle)modalTransitionStyleForController:(UIViewController *)controller;
 
 #pragma mark -
 #pragma mark Favorites
 
-+ (NSArray *)favoriteSharersForType:(SHKShareType)type;
-+ (void)pushOnFavorites:(NSString *)className forType:(SHKShareType)type;
-+ (void)setFavorites:(NSArray *)favs forType:(SHKShareType)type;
++ (NSArray *)favoriteSharersForItem:(SHKItem *)item;
++ (void)pushOnFavorites:(NSString *)className forItem:(SHKItem *)item;
++ (void)setFavorites:(NSArray *)favs forItem:(SHKItem *)item;
 
 #pragma mark -
 #pragma mark Credentials
@@ -122,10 +120,3 @@ NSString * SHKEncode(NSString * value);
 NSString * SHKEncodeURL(NSURL * value);
 NSString * SHKFlattenHTML(NSString * value, BOOL preserveLineBreaks);
 NSString * SHKLocalizedString(NSString* key, ...);
-void SHKSwizzle(Class c, SEL orig, SEL newClassName);
-
-@interface NSFileManager (DoNotBackup)
-
-- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
-
-@end

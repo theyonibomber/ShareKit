@@ -25,7 +25,6 @@
 
 
 #import "SHKKippt.h"
-#import "JSONKit.h"
 #import <objc/runtime.h>
 
 // -- Constants --
@@ -122,6 +121,7 @@ static char const* const ListURIKey = "ListURIKey";
     
     NSDictionary *headers = [[NSDictionary alloc] initWithObjectsAndKeys:authValue, @"Authorization", nil];
     self.request.headerFields = headers;
+    [headers release];
     [self.request start];
 }
 
@@ -130,7 +130,7 @@ static char const* const ListURIKey = "ListURIKey";
 
 + (NSString *)sharerTitle
 {
-	return @"Kippt";
+	return SHKLocalizedString(@"Kippt");
 }
 
 + (BOOL)canShareURL
@@ -154,7 +154,7 @@ static char const* const ListURIKey = "ListURIKey";
 - (void)authorizationFormValidate:(SHKFormController *)form
 {
 	// Display an activity indicator	
-	if (!quiet) {
+	if (!self.quiet) {
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Logging in...")];
     }
 	
@@ -178,7 +178,7 @@ static char const* const ListURIKey = "ListURIKey";
 	
 	if (aRequest.success)
 	{
-		[pendingForm saveForm];
+		[self.pendingForm saveForm];
 	}
     else
     {
@@ -216,8 +216,8 @@ static char const* const ListURIKey = "ListURIKey";
                                            nil];
         
 		return [NSArray arrayWithObjects:
-				[SHKFormFieldSettings label:SHKLocalizedString(@"Title") key:@"title" type:SHKFormFieldTypeText start:item.title],
-				[SHKFormFieldSettings label:SHKLocalizedString(@"Notes") key:@"notes" type:SHKFormFieldTypeText start:item.text],
+				[SHKFormFieldSettings label:SHKLocalizedString(@"Title") key:@"title" type:SHKFormFieldTypeText start:self.item.title],
+				[SHKFormFieldSettings label:SHKLocalizedString(@"Notes") key:@"notes" type:SHKFormFieldTypeText start:self.item.text],
 				[SHKFormFieldSettings label:SHKLocalizedString(@"List")
                                         key:@"list"
                                        type:SHKFormFieldTypeOptionPicker
@@ -234,7 +234,7 @@ static char const* const ListURIKey = "ListURIKey";
 
 - (void)SHKFormOptionControllerEnumerateOptions:(SHKFormOptionController *)optionController
 {
-    curOptionController = optionController;
+    self.curOptionController = optionController;
     
     // This is our cue to fire a request
     [self sendRequest:kListsURL params:nil isFinishedSelector:@selector(didFetchLists:) method:@"GET"];
@@ -250,10 +250,11 @@ static char const* const ListURIKey = "ListURIKey";
     if (aRequest.response.statusCode != 200) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"Failed to fetch lists." forKey:NSLocalizedDescriptionKey];
         NSError *err = [NSError errorWithDomain:@"KPT" code:1 userInfo:userInfo];
-        [curOptionController optionsEnumerationFailedWithError:err];
-        curOptionController = nil;
+        [self.curOptionController optionsEnumerationFailedWithError:err];
+        self.curOptionController = nil;
     } else {
-        NSDictionary *result = [aRequest.result objectFromJSONString];
+        NSError *error = nil;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:aRequest.data options:NSJSONReadingMutableContainers error:&error];
         NSMutableArray *lists = [[NSMutableArray alloc] init];
         for (NSDictionary *l in [result objectForKey:@"objects"]) {
             NSString *s = [l objectForKey:@"title"];
@@ -261,8 +262,8 @@ static char const* const ListURIKey = "ListURIKey";
             [lists addObject:s];
         }
         
-        [curOptionController optionsEnumerated:lists];
-        curOptionController = nil;
+        [self.curOptionController optionsEnumerated:lists];
+        self.curOptionController = nil;
     }
 }
 
@@ -273,18 +274,21 @@ static char const* const ListURIKey = "ListURIKey";
 {	
 	if ([self validateItem])
 	{
-        NSString *list = [item customValueForKey:@"list"];
-        NSString *notes = [item customValueForKey:@"notes"];
+        NSString *list = [self.item customValueForKey:@"list"];
+        NSString *notes = [self.item customValueForKey:@"notes"];
         if (notes == nil) notes = @"";
         
         NSDictionary *clip = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [item.URL absoluteString], @"url",
-                              item.title, @"title",
+                              [self.item.URL absoluteString], @"url",
+                              self.item.title, @"title",
                               list.listURI, @"list",
                               notes, @"notes",
                               nil];
         
-        [self sendRequest:kNewClipURL params:[clip JSONString] isFinishedSelector:@selector(sendFinished:) method:@"POST"];
+        NSError *error = nil;
+        NSData *clipData = [NSJSONSerialization dataWithJSONObject:clip options:NSJSONWritingPrettyPrinted error:&error];
+        NSString *clipString = [[NSString alloc] initWithData:clipData encoding:NSUTF8StringEncoding];
+        [self sendRequest:kNewClipURL params:clipString isFinishedSelector:@selector(sendFinished:) method:@"POST"];
 		
 		// Notify delegate
 		[self sendDidStart];

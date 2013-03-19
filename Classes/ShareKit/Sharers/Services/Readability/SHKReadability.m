@@ -23,10 +23,8 @@
 //
 //
 
-
 #import "SHKConfiguration.h"
 #import "SHKReadability.h"
-#import "JSONKit.h"
 #import "NSMutableDictionary+NSNullsToEmptyStrings.h"
 
 static NSString *const kSHKReadabilityUserInfo=@"kSHKReadabilityUserInfo";
@@ -71,7 +69,7 @@ static NSString *const kSHKReadabilityUserInfo=@"kSHKReadabilityUserInfo";
 
 + (NSString *)sharerTitle
 {
-	return @"Readability";
+	return SHKLocalizedString(@"Readability");
 }
 
 + (BOOL)canShareURL
@@ -129,7 +127,7 @@ static NSString *const kSHKReadabilityUserInfo=@"kSHKReadabilityUserInfo";
 {	
 	if (xAuth)
 	{
-		NSDictionary *formValues = [pendingForm formValues];
+		NSDictionary *formValues = [self.pendingForm formValues];
 		
 		OARequestParameter *username = [[[OARequestParameter alloc] initWithName:@"x_auth_username"
 																								 value:[formValues objectForKey:@"username"]] autorelease];
@@ -150,7 +148,7 @@ static NSString *const kSHKReadabilityUserInfo=@"kSHKReadabilityUserInfo";
 	{
 		if (ticket.didSucceed)
 		{
-			[pendingForm close];
+			[self.pendingForm close];
 		}
 		
 		else
@@ -187,7 +185,7 @@ static NSString *const kSHKReadabilityUserInfo=@"kSHKReadabilityUserInfo";
 
 - (BOOL)send
 {	
-	switch (item.shareType) {
+	switch (self.item.shareType) {
 			
 		case SHKShareTypeURL:            
 			[self sendBookmark];
@@ -218,7 +216,7 @@ static NSString *const kSHKReadabilityUserInfo=@"kSHKReadabilityUserInfo";
   BOOL shouldArchive = [[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"%@_shouldArchive", [self sharerId]]];
   
 	OARequestParameter *bookmarkParam = [[OARequestParameter alloc] initWithName:@"url"
-																								value:[item.URL absoluteString]];
+																								value:[self.item.URL absoluteString]];
   OARequestParameter *favoriteParam = [[OARequestParameter alloc] initWithName:@"favorite"
                                                                          value:isFavorite?@"1":@"0"];
   OARequestParameter *archiveParam = [[OARequestParameter alloc] initWithName:@"archive"
@@ -270,7 +268,9 @@ static NSString *const kSHKReadabilityUserInfo=@"kSHKReadabilityUserInfo";
 		[self shouldReloginWithPendingAction:SHKPendingSend];
         return;
 	}
-	NSDictionary *errorDict = [errorMessage objectFromJSONString];
+    
+    NSError *error = nil;
+    NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 
 	if ([[errorDict objectForKey:@"success"] intValue] == 0)
 	{
@@ -297,11 +297,11 @@ static NSString *const kSHKReadabilityUserInfo=@"kSHKReadabilityUserInfo";
 	{
 		if ([key isEqualToString:@"favorite"])
 		{
-			[[NSUserDefaults standardUserDefaults] setBool:[formValues objectForKey:key] == SHKFormFieldSwitchOn forKey:[NSString stringWithFormat:@"%@_isFavorite", [self sharerId]]];
+			[[NSUserDefaults standardUserDefaults] setBool:[[formValues objectForKey:key] isEqualToString:SHKFormFieldSwitchOn] forKey:[NSString stringWithFormat:@"%@_isFavorite", [self sharerId]]];
 		}
     if ([key isEqualToString:@"archive"])
 		{
-			[[NSUserDefaults standardUserDefaults] setBool:[formValues objectForKey:key] == SHKFormFieldSwitchOn forKey:[NSString stringWithFormat:@"%@_shouldArchive", [self sharerId]]];
+			[[NSUserDefaults standardUserDefaults] setBool:[[formValues objectForKey:key] isEqualToString:SHKFormFieldSwitchOn] forKey:[NSString stringWithFormat:@"%@_shouldArchive", [self sharerId]]];
 		}
 	}
 }

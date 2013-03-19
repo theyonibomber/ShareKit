@@ -69,15 +69,6 @@
 	self.view = webView;
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-	
-	// Remove the SHK view wrapper from the window
-	[[SHK currentHelper] viewWasDismissed];
-}
-
-
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {		
     
@@ -99,11 +90,14 @@
 				if (parts.count == 2)
 					[queryParams setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
 			}
+            [delegate tokenAuthorizeView:self didFinishWithSuccess:YES queryParams:queryParams error:nil];
 		}
+        else
+        {
+            [self cancel];
+        }
 		
-		[delegate tokenAuthorizeView:self didFinishWithSuccess:YES queryParams:queryParams error:nil];
-		self.delegate = nil;
-		
+        self.delegate = nil;
 		return NO;
 	}
 	

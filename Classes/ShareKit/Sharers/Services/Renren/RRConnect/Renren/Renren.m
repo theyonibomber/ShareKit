@@ -3,7 +3,6 @@
 //
 #import <CommonCrypto/CommonDigest.h>
 #import "ROConnect.h"
-#import "JSONKit.h"
 #import "ROCreateAlbumResponseItem.h"
 #import "ROUserResponseItem.h"
 #import "ROUtility.h"

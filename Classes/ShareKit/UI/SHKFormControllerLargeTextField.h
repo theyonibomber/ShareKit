@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSData *video;
 @property NSUInteger imageTextLength; //set only if image subtracts from text length (e.g. Twitter)
 @property BOOL hasLink; //only if the link is not part of the text in a text view
+@property BOOL allowSendingEmptyMessage;
 @property (nonatomic, retain) NSString *text;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil delegate:(id <SHKFormControllerLargeTextFieldDelegate>)aDelegate;
@@ -26,7 +27,7 @@
 @end
 
 @protocol SHKFormControllerLargeTextFieldDelegate <NSObject> 
-
+@required
 - (void)sendForm:(SHKFormControllerLargeTextField *)form;
 + (NSString *)sharerTitle;
 - (void)sendDidCancel;

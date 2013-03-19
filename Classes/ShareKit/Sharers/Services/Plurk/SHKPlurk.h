@@ -2,8 +2,7 @@
 //  SHKPlurk.h
 //  ShareKit
 //
-//  Created by Che-Ching Wu on 6/16/2011.
-
+//  Created by Polydice on 2/12/12.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,12 +24,10 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import "SHKOAuthSharer.h"
 #import "SHKFormControllerLargeTextField.h"
 
 @interface SHKPlurk : SHKOAuthSharer <SHKFormControllerLargeTextFieldDelegate>
-
 
 #pragma mark -
 #pragma mark UI Implementation
@@ -40,13 +37,15 @@
 #pragma mark -
 #pragma mark Share API Methods
 
-- (void)sendStatus;
-- (void)sendStatusTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
-- (void)sendStatusTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error;
-
 - (void)uploadImage;
 - (void)uploadImageTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
 - (void)uploadImageTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error;
 - (void)alertUploadImageWithError:(NSError *)error;
+
+- (void)sendForm:(SHKFormControllerLargeTextField *)form;
+
+- (void)sendStatus;
+- (void)sendStatusTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data;
+- (void)sendStatusTicket:(OAServiceTicket *)ticket didFailWithError:(NSError *)error;
 
 @end

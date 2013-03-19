@@ -14,8 +14,6 @@
 
 "Cancel" = "Cancel";
 
-"Slug" = "Slug";
-
 "Private" = "Private";
 
 "Public" = "Public";
@@ -85,8 +83,6 @@
 "Invalid email or password." = "Invalid email or password.";
 
 "The service encountered an error. Please try again later." = "The service encountered an error. Please try again later.";
-
-"There was an error sending your post to Tumblr." = "There was an error sending your post to Tumblr.";
 
 "There was an error saving to Pinboard" = "There was an error saving to Pinboard";
 
@@ -210,3 +206,37 @@
 "There was an error saving to %@" = "There was an error saving to %@";
 "Select Group" = "Select Group";
 "Flickr Groups" = "Flickr Groups";
+
+//Demo app
+"Accounts" = "Accounts";
+
+//Tumblr V2
+"Publish type" = "Publish type";
+"Publish now" = "Publish now";
+"Draft" = "Draft";
+"Add to queue" = "Add to queue";
+"Publish" = "Publish";
+
+/* Sharers' titles */
+"SMS" = "SMS";
+"Delicious" = "Delicious";
+"Diigo" = "Diigo";
+"Evernote" = "Evernote";
+"Facebook" = "Facebook";
+"Flickr" = "Flickr";
+"Foursquare" = "Foursquare";
+"Google+" = "Google+";
+"Google Reader" = "Google Reader";
+"Hatena" = "Hatena";
+"Instapaper" = "Instapaper";
+"Kippt" = "Kippt";
+"LinkedIn" = "LinkedIn";
+"Pinboard" = "Pinboard";
+"Plurk" = "Plurk";
+"Pocket" = "Pocket";
+"Readability" = "Readability";
+"Sina Weibo" = "Sina Weibo";
+"Tumblr" = "Tumblr";
+"Twitter" = "Twitter";
+"Vkontakte" = "Vkontakte";
+"Instagram" = "Instagram";

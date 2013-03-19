@@ -14,8 +14,6 @@
 
 "Cancel" = "Cancel·lar";
 
-"Slug" = "Slug";
-
 "Private" = "Privat";
 
 "Public" = "Públic";
@@ -85,8 +83,6 @@
 "Invalid email or password." = "Email o contrasenya no vàlids.";
 
 "The service encountered an error. Please try again later." = "El servei ha trobat un error. Intenta-ho més tard.";
-
-"There was an error sending your post to Tumblr." = "Hi ha hagut un error enviant el teu missatge a Tumblr.";
 
 "There was an error saving to Pinboard" = "Hi ha hagut un error desant a Pinboard";
 

@@ -36,7 +36,6 @@
 #import "ROGlobalStyle.h"
 #import "ROCloseButton.h"
 #import "ROImageView.h"
-#import "JSONKit.h"
 
 
 #pragma mark -- Base

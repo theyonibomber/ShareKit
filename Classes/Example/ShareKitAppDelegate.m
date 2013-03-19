@@ -9,6 +9,7 @@
 #import "ShareKitAppDelegate.h"
 #import "RootViewController.h"
 
+#import "SHKGooglePlus.h"
 #import "SHKReadItLater.h"
 #import "SHKFacebook.h"
 #import "SHKConfiguration.h"
@@ -29,9 +30,8 @@
     //Here you load ShareKit submodule with app specific configuration
     DefaultSHKConfigurator *configurator = [[ShareKitDemoConfigurator alloc] init];
     [SHKConfiguration sharedInstanceWithConfigurator:configurator];
-    [configurator release];
     
-	[window addSubview:[navigationController view]];
+    window.rootViewController = navigationController;
     [window makeKeyAndVisible];
 	
 	navigationController.topViewController.title = SHKLocalizedString(@"Examples");
@@ -58,37 +58,27 @@
 	[SHKFacebook handleWillTerminate];
 }
 
-- (BOOL)handleOpenURL:(NSURL*)url
-{
-	NSString* scheme = [url scheme];
-  if ([scheme hasPrefix:[NSString stringWithFormat:@"fb%@", SHKCONFIG(facebookAppId)]])
-    return [SHKFacebook handleOpenURL:url];
-  return YES;
-}
-
 - (BOOL)application:(UIApplication *)application 
-            openURL:(NSURL *)url 
-  sourceApplication:(NSString *)sourceApplication 
-         annotation:(id)annotation 
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
 {
-  return [self handleOpenURL:url];
-}
-
-- (BOOL)application:(UIApplication *)application 
-      handleOpenURL:(NSURL *)url 
-{
-  return [self handleOpenURL:url];  
+    NSString* scheme = [url scheme];
+    
+    if ([scheme hasPrefix:[NSString stringWithFormat:@"fb%@", SHKCONFIG(facebookAppId)]]) {
+        return [SHKFacebook handleOpenURL:url];
+    } else if ([scheme isEqualToString:@"com.yourcompany.sharekitdemo"]) {
+        return [SHKGooglePlus handleURL:url sourceApplication:sourceApplication annotation:annotation];
+    }
+    
+    return YES;
 }
 
 #pragma mark -
 #pragma mark Memory management
 
 - (void)dealloc {
-	[navigationController release];
-	[window release];
-	[super dealloc];
 }
-
 
 @end
 

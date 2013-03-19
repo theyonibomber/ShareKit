@@ -196,7 +196,17 @@
 }
 
 - (NSNumber*)forcePreIOS6FacebookPosting {
-	return [NSNumber numberWithBool:true];
+	return [NSNumber numberWithBool:false];
+}
+
+/*
+ Create a project on Google APIs console,
+ https://code.google.com/apis/console . Under "API Access", create a
+ client ID as "Installed application" with the type "iOS", and
+ register the bundle ID of your application.
+ */
+- (NSString*)googlePlusClientId {
+    return @"651258972991.apps.googleusercontent.com";
 }
 
 // Read It Later - http://readitlaterlist.com/api/signup/ 
@@ -327,6 +337,40 @@
 
 - (NSString*)foursquareV2RedirectURI {
     return @"app://foursquare";
+}
+
+// Tumblr - http://www.tumblr.com/docs/en/api/v2
+- (NSString*)tumblrConsumerKey {
+	return @"vT0GPbmG5pwWOLTyrFo6uG0UJQEfX4RgrnXY7ZTzkAJyCrHNPF";
+}
+// Plurk - http://www.plurk.com/API
+- (NSString *)plurkAppKey {
+  return @"orexUORVkR2C";
+}
+
+- (NSString*)tumblrSecret {
+	return @"XsYJPUNJDwCAw6B1PcmFjXuCLtgBp8chRrNuZhpLzn8gFBDg42";
+}
+
+- (NSString*)tumblrCallbackUrl {
+	return @"tumblr.sharekit.com";
+}
+
+// Hatena - https://www.hatena.com/yours12345/config/auth/develop
+- (NSString*)hatenaConsumerKey {
+	return @"rtu/vY4jfiA3DQ==";
+}
+
+- (NSString*)hatenaSecret {
+	return @"gFtqGv4/toRYlX/PT160+9fcrAU=";
+}
+
+- (NSString *)plurkAppSecret {
+  return @"YYQUAeAPY9YMcCP5ol0dB6epaaMFT10C";
+}
+
+- (NSString *)plurkCallbackURL {
+  return @"https://github.com/ShareKit/ShareKit";
 }
 
 /*

@@ -85,51 +85,32 @@
 
 - (BOOL)send
 {	
-	if (item.shareType == SHKShareTypeImage)
+	if (self.item.shareType == SHKShareTypeImage)
 		[self writeImageToAlbum];
-	else if (item.shareType == SHKShareTypeVideo) {
-		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Saving...")];
+	else if (self.item.shareType == SHKShareTypeVideo) {
 		[self writeVideoToAlbum];
 	}
-	
-	return YES;
+    // Notify user
+    [[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Saved!")];
+
+    // Notify delegate, but quietly
+    self.quiet = YES;
+    [self sendDidFinish];
+
+    return YES;
 }
 
 - (void) writeImageToAlbum
 {
-	UIImageWriteToSavedPhotosAlbum(item.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+	UIImageWriteToSavedPhotosAlbum(self.item.image, nil, nil, nil);
 }
 
 - (void) writeVideoToAlbum
 {
 	NSString *tempPath = [NSString stringWithFormat:@"%@%@", NSTemporaryDirectory(), @"sharekit_temp_video.m4v"];
 	if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(tempPath)) {
-		UISaveVideoAtPathToSavedPhotosAlbum (tempPath, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+		UISaveVideoAtPathToSavedPhotosAlbum (tempPath, nil, nil, nil);
 	}
-	else {
-		[self sendCompleted];
-	}
-}
-
-- (void)saveCompleteWithError:(NSError *)error
-{
-	if (!error) {
-		[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Saved!")];
-	}
-	else {
-		[[SHKActivityIndicator currentIndicator] displayCompleted:SHKLocalizedString(@"Error")];
-	}
-	[self sendCompleted];
-}
-
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
-{
-	[self saveCompleteWithError:error];
-}
-
-- (void)video:(NSString *)videoPath didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo 
-{
-	[self saveCompleteWithError:error];
 }
 
 

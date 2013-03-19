@@ -6,7 +6,6 @@
 #import "RORequestParam.h"
 #import "ROError.h"
 #import "ROUtility.h"
-#import "JSONKit.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
@@ -124,7 +123,8 @@ static const NSTimeInterval kTimeoutInterval = 60.0;
 + (id)getRequestSessionKeyWithParams:(NSString *)url {  
 	NSURL* sessionKeyURL = [NSURL URLWithString:url];
 	NSData *data=[NSData dataWithContentsOfURL:sessionKeyURL];
-	id result = [[JSONDecoder decoder] objectWithData:data];
+    NSError *error = nil;
+	id result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 	return result;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -290,7 +290,7 @@ static const NSTimeInterval kTimeoutInterval = 60.0;
     }
     
     
-    id result = [[JSONDecoder decoder] objectWithData:data];
+    id result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:error];
     
     self.responseObject = [self.requestParamObject requestResultToResponse:result];
     self.responseObject.param = self.requestParamObject;

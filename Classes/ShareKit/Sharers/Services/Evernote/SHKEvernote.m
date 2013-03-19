@@ -47,12 +47,12 @@
 #pragma mark -
 #pragma mark Configuration : Service Defination
 
-+ (NSString *)sharerTitle { return @"Evernote"; }
++ (NSString *)sharerTitle { return SHKLocalizedString(@"Evernote"); }
 + (BOOL)canShareURL   { return YES; }
 + (BOOL)canShareImage { return YES; }
 + (BOOL)canShareVideo { return YES; }
 + (BOOL)canShareText  { return YES; }
-+ (BOOL)canShareFile  { return YES; }
++ (BOOL)canShareFileOfMimeType:(NSString *)mimeType size:(NSUInteger)size { return YES; }
 + (BOOL)requiresAuthentication { return YES; }
 
 
@@ -71,7 +71,7 @@
 
 - (void)promptAuthorization {
     EvernoteSession *session = [EvernoteSession sharedSession];
-    [session authenticateWithViewController:[SHK currentHelper].rootViewForCustomUIDisplay completionHandler:^(NSError *error) {
+    [session authenticateWithViewController:[SHK currentHelper].rootViewForUIDisplay completionHandler:^(NSError *error) {
         BOOL success = (error == nil) && session.isAuthenticated;
         [self authDidFinish:success];
         if (error) {
@@ -101,9 +101,9 @@
 - (NSArray *)shareFormFieldsForType:(SHKShareType)type 
 {
 	return [NSArray arrayWithObjects:
-	 [SHKFormFieldSettings label:SHKLocalizedString(@"Title") key:@"title" type:SHKFormFieldTypeText start:item.title],
-	 //[SHKFormFieldSettings label:SHKLocalizedString(@"Memo")  key:@"text" type:SHKFormFieldTypeText start:item.text],
-	 [SHKFormFieldSettings label:SHKLocalizedString(@"Tag, tag")  key:@"tags" type:SHKFormFieldTypeText start:[item.tags componentsJoinedByString:@", "]],
+	 [SHKFormFieldSettings label:SHKLocalizedString(@"Title") key:@"title" type:SHKFormFieldTypeText start:self.item.title],
+	 //[SHKFormFieldSettings label:SHKLocalizedString(@"Memo")  key:@"text" type:SHKFormFieldTypeText start:self.item.text],
+	 [SHKFormFieldSettings label:SHKLocalizedString(@"Tag, tag")  key:@"tags" type:SHKFormFieldTypeText start:[self.item.tags componentsJoinedByString:@", "]],
 	 nil];
 }
 
@@ -125,8 +125,8 @@
     SHKEvernoteItem *enItem = nil;
     NSMutableArray *resources = nil;
     EDAMNote *note = nil;
-    if([item isKindOfClass:[SHKEvernoteItem class]]) {
-        enItem = (SHKEvernoteItem *)item;
+    if([self.item isKindOfClass:[SHKEvernoteItem class]]) {
+        enItem = (SHKEvernoteItem *)self.item;
         note = enItem.note;
         resources = [note.resources mutableCopy];
     }
@@ -143,46 +143,46 @@
     	[atr setSourceURL:[enItem.URL absoluteString]];
     }
     
-    note.title = item.title.length > 0 ? item.title :( [note titleIsSet] ? note.title : SHKLocalizedString(@"Untitled") );
+    note.title = self.item.title.length > 0 ? self.item.title :( [note titleIsSet] ? note.title : SHKLocalizedString(@"Untitled") );
     
-    if(![note tagNamesIsSet]&&item.tags)
-    	[note setTagNames:item.tags];
+    if(![note tagNamesIsSet]&&self.item.tags)
+    	[note setTagNames:self.item.tags];
     
     if(![note contentIsSet]) {
         NSMutableString* contentStr = [[NSMutableString alloc] initWithString:kENMLPrefix];
-        NSString * strURL = [item.URL absoluteString];
+        NSString * strURL = [self.item.URL absoluteString];
         
         // Evernote doesn't accept unenencoded ampersands
         strURL = SHKEncode(strURL);
         
         if(strURL.length>0) {
-            if(item.title.length>0)
-                [contentStr appendFormat:@"<h1><a href=\"%@\">%@</a></h1>",strURL,[item.title gtm_stringByEscapingForHTML]];
+            if(self.item.title.length>0)
+                [contentStr appendFormat:@"<h1><a href=\"%@\">%@</a></h1>",strURL,[self.item.title gtm_stringByEscapingForHTML]];
             [contentStr appendFormat:@"<p><a href=\"%@\">%@</a></p>",strURL,strURL ];
             atr.sourceURL = strURL;
-        } else if(item.title.length>0)
-            [contentStr appendFormat:@"<h1>%@</h1>",[item.title gtm_stringByEscapingForHTML]];
+        } else if(self.item.title.length>0)
+            [contentStr appendFormat:@"<h1>%@</h1>",[self.item.title gtm_stringByEscapingForHTML]];
         
-        if(item.text.length>0 )
-            [contentStr appendFormat:@"<p>%@</p>", [SHKFlattenHTML(item.text, YES) gtm_stringByEscapingForHTML]];
+        if(self.item.text.length>0 )
+            [contentStr appendFormat:@"<p>%@</p>", [SHKFlattenHTML(self.item.text, YES) gtm_stringByEscapingForHTML]];
         
-        if(item.image) {
+        if(self.item.image) {
             EDAMResource *img = [[[EDAMResource alloc] init] autorelease];
-            NSData *rawimg = UIImageJPEGRepresentation(item.image, 0.6);
+            NSData *rawimg = UIImageJPEGRepresentation(self.item.image, 0.6);
             EDAMData *imgd = [[[EDAMData alloc] initWithBodyHash:rawimg size:[rawimg length] body:rawimg] autorelease];
             [img setData:imgd];
             [img setRecognition:imgd];
             [img setMime:@"image/jpeg"];
             [resources addObject:img];
-            [contentStr appendString:[NSString stringWithFormat:@"<p>%@</p>",[self enMediaTagWithResource:img width:item.image.size.width height:item.image.size.height]]];
+            [contentStr appendString:[NSString stringWithFormat:@"<p>%@</p>",[self enMediaTagWithResource:img width:self.item.image.size.width height:self.item.image.size.height]]];
         }
         
-        if(item.data) {
+        if(self.item.data) {
             EDAMResource *file = [[[EDAMResource alloc] init] autorelease];	
-            EDAMData *filed = [[[EDAMData alloc] initWithBodyHash:item.data size:[item.data length] body:item.data] autorelease];
+            EDAMData *filed = [[[EDAMData alloc] initWithBodyHash:self.item.data size:[self.item.data length] body:self.item.data] autorelease];
             [file setData:filed];
             [file setRecognition:filed];
-            [file setMime:item.mimeType];
+            [file setMime:self.item.mimeType];
             [resources addObject:file];
             [contentStr appendString:[NSString stringWithFormat:@"<p>%@</p>",[self enMediaTagWithResource:file width:0 height:0]]];
         }

@@ -23,11 +23,6 @@
 	return YES;
 }
 
-+ (BOOL)canShareFile
-{
-	return NO;
-}
-
 + (BOOL)shareRequiresInternetConnection
 {
 	return NO;
@@ -71,7 +66,7 @@
     info.outputType = self.item.printOutputType;
     printer.printInfo = info;
 	printer.showsPageRange = NO;
-	printer.printingItem = item.image;
+	printer.printingItem = self.item.image;
 	UIPrintInteractionCompletionHandler completionHandler = ^(UIPrintInteractionController *printer,
 															  BOOL completed, NSError *error) {
 		[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
@@ -84,7 +79,7 @@
 	};
 
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		UIView *view = [SHK currentHelper].rootViewForCustomUIDisplay.view;
+		UIView *view = [SHK currentHelper].rootViewForUIDisplay.view;
 		CGSize viewSize = view.bounds.size;
 		CGRect fromRect = CGRectMake(viewSize.width/2, viewSize.height/2,
 									 viewSize.width, viewSize.height);

@@ -35,7 +35,6 @@
 #import "NSMutableDictionary+NSNullsToEmptyStrings.h"
 #import "TencentOAMutableURLRequest.h"
 #import "TencentOAuthView.h"
-#import "JSONKit.h"
 
 static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 
@@ -123,20 +122,20 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 {
 	BOOL result = YES;
 	
-	if (item.shareType == SHKShareTypeURL)
+	if (self.item.shareType == SHKShareTypeURL)
 	{
 		BOOL isURLAlreadyShortened = [self shortenURL];
 		result = isURLAlreadyShortened;
 	}
 	
-	else if (item.shareType == SHKShareTypeImage)
+	else if (self.item.shareType == SHKShareTypeImage)
 	{
-		[item setCustomValue:item.title forKey:@"status"];
+		[self.item setCustomValue:self.item.title forKey:@"status"];
 	}
 	
-	else if (item.shareType == SHKShareTypeText)
+	else if (self.item.shareType == SHKShareTypeText)
     {		
-		[item setCustomValue:item.text forKey:@"status"];
+		[self.item setCustomValue:self.item.text forKey:@"status"];
 	}
 	
 	return result;
@@ -157,22 +156,22 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 
 - (void)show
 {
-    if (item.shareType == SHKShareTypeURL)
+    if (self.item.shareType == SHKShareTypeURL)
 	{
 		[self showTencentWeiboForm];
 	}
 	
-    else if (item.shareType == SHKShareTypeImage)
+    else if (self.item.shareType == SHKShareTypeImage)
 	{
 		[self showTencentWeiboForm];
 	}
 	
-	else if (item.shareType == SHKShareTypeText)
+	else if (self.item.shareType == SHKShareTypeText)
 	{
 		[self showTencentWeiboForm];
 	}
     
-    else if (item.shareType == SHKShareTypeUserInfo)
+    else if (self.item.shareType == SHKShareTypeUserInfo)
 	{
 		[self setQuiet:YES];
 		[self tryToSend];
@@ -183,9 +182,9 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 {
 	SHKFormControllerLargeTextField *rootView = [[SHKFormControllerLargeTextField alloc] initWithNibName:nil bundle:nil delegate:self];	
 	
-	rootView.text = [item customValueForKey:@"status"];
+	rootView.text = [self.item customValueForKey:@"status"];
 	rootView.maxTextLength = 140;
-	rootView.image = item.image;
+	rootView.image = self.item.image;
 	rootView.imageTextLength = 25;
 	
 	self.navigationBar.tintColor = SHKCONFIG_WITH_ARGUMENT(barTintForView:,self);
@@ -198,7 +197,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 
 - (void)sendForm:(SHKFormControllerLargeTextField *)form
 {	
-	[item setCustomValue:form.textView.text forKey:@"status"];
+	[self.item setCustomValue:form.textView.text forKey:@"status"];
 	[self tryToSend];
 }
 
@@ -211,16 +210,16 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
     
 	if (![SHK connected])
 	{
-		[item setCustomValue:[NSString stringWithFormat:@"%@ %@", item.title, [item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] forKey:@"status"];
+		[self.item setCustomValue:[NSString stringWithFormat:@"%@ %@", self.item.title, [self.item.URL.absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] forKey:@"status"];
 		return YES;
 	}
     
-	if (!quiet)
+	if (!self.quiet)
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Shortening URL...")];
 	
 	self.request = [[[SHKRequest alloc] initWithURL:[NSURL URLWithString:[NSMutableString stringWithFormat:@"http://api.t.sina.com.cn/short_url/shorten.json?source=%@&url_long=%@",
 																		  SHKCONFIG(sinaWeiboConsumerKey),						  
-																		  SHKEncodeURL(item.URL)
+																		  SHKEncodeURL(self.item.URL)
 																		  ]]
 											 params:nil
 										   delegate:self
@@ -237,8 +236,10 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
     
     @try 
     {
-        NSArray *result = [[aRequest getResult] objectFromJSONString];
-        item.URL = [NSURL URLWithString:[[result objectAtIndex:0] objectForKey:@"url_short"]];
+        NSError *error = nil;
+        NSData *resultData = [[aRequest getResult] dataUsingEncoding:NSUTF8StringEncoding];
+        NSArray *result = [NSJSONSerialization JSONObjectWithData:resultData options:NSJSONReadingMutableContainers error:&error];
+        self.item.URL = [NSURL URLWithString:[[result objectAtIndex:0] objectForKey:@"url_short"]];
     }
     @catch (NSException *exception) 
 	{
@@ -250,7 +251,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 						   otherButtonTitles:nil] autorelease] show];
     }
     
-    [item setCustomValue:[NSString stringWithFormat:@"%@: %@", item.title, item.URL.absoluteString] 
+    [self.item setCustomValue:[NSString stringWithFormat:@"%@: %@", self.item.title, self.item.URL.absoluteString]
                   forKey:@"status"];
     
 	[super share];
@@ -266,7 +267,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 		return YES;
 	}
 	
-	NSString *status = [item customValueForKey:@"status"];
+	NSString *status = [self.item customValueForKey:@"status"];
 	return status != nil;
 }
 
@@ -275,7 +276,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 	BOOL result = NO;
     
 	BOOL isValid = [self validateItem];    
-	NSString *status = [item customValueForKey:@"status"];
+	NSString *status = [self.item customValueForKey:@"status"];
 	
 	if (isValid && status.length <= 140) {
 		result = YES;
@@ -289,7 +290,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 	if (![self validateItemAfterUserEdit])
 		return NO;
 	
-	switch (item.shareType) {
+	switch (self.item.shareType) {
 			
 		case SHKShareTypeImage:            
 			[self sendImage];
@@ -328,7 +329,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
                                                                       value:[self getIPAddress]];
     
     OARequestParameter *content = [[OARequestParameter alloc] initWithName:@"content"
-                                                                     value:[item customValueForKey:@"status"]];
+                                                                     value:[self.item customValueForKey:@"status"]];
     
 	NSArray *params = [NSArray arrayWithObjects:format, clientip, content, nil];
 	[oRequest setParameters:params];
@@ -353,7 +354,8 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
     
 	if (ticket.didSucceed) 
     {
-        NSDictionary *result = [data objectFromJSONData];
+        NSError *error = nil;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
         
         if ([[result valueForKey:@"ret"] intValue] == 0)
             [self sendDidFinish];
@@ -390,7 +392,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
                                                                       value:[self getIPAddress]];
     
     OARequestParameter *content = [[OARequestParameter alloc] initWithName:@"content"
-                                                                     value:[item customValueForKey:@"status"]];
+                                                                     value:[self.item customValueForKey:@"status"]];
     
 	NSArray *params = [NSArray arrayWithObjects:format, clientip, content, nil];
 	[oRequest setParameters:params];
@@ -402,7 +404,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
     
     
     CGFloat compression = 0.9f;
-	NSData *imageData = UIImageJPEGRepresentation([item image], compression);
+	NSData *imageData = UIImageJPEGRepresentation([self.item image], compression);
 	
 	// TODO
 	// Note from Nate to creator of sendImage method - This seems like it could be a source of sluggishness.
@@ -412,7 +414,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 	while ([imageData length] > 700000 && compression > 0.1) {
 		// NSLog(@"Image size too big, compression more: current data size: %d bytes",[imageData length]);
 		compression -= 0.1;
-		imageData = UIImageJPEGRepresentation([item image], compression);
+		imageData = UIImageJPEGRepresentation([self.item image], compression);
 		
 	}
 	
@@ -432,7 +434,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 	[body appendData: [[NSString stringWithFormat: @"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	[body appendData: [@"Content-Disposition: form-data; name=\"content\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-	[body appendData: [[item customValueForKey:@"status"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[body appendData: [[self.item customValueForKey:@"status"] dataUsingEncoding:NSUTF8StringEncoding]];
 	[body appendData: [@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	[body appendData: [[NSString stringWithFormat: @"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -460,7 +462,8 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
     
     if (ticket.didSucceed) 
     {
-        NSDictionary *result = [data objectFromJSONData];
+        NSError *error = nil;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
         
         if ([[result valueForKey:@"ret"] intValue] == 0)
             [self sendDidFinish];
@@ -502,12 +505,7 @@ static NSString *const kSHKTencentWeiboUserInfo = @"kSHKTencentWeiboUserInfo";
 
 		NSError *error = nil;
 		NSMutableDictionary *userInfo;
-		Class serializator = NSClassFromString(@"NSJSONSerialization");
-		if (serializator) {
-			userInfo = [serializator JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-		} else {
-			userInfo = [[JSONDecoder decoder] mutableObjectWithData:data error:&error];
-		}
+        userInfo = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 
 		if (error) {
 			SHKLog(@"Error when parsing json TencentWeibo user info request:%@", [error description]);

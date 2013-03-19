@@ -236,8 +236,17 @@
 	return [NSNumber numberWithBool:false];
 }
 
+/*
+ Create a project on Google APIs console,
+ https://code.google.com/apis/console . Under "API Access", create a
+ client ID as "Installed application" with the type "iOS", and
+ register the bundle ID of your application.
+ */
+- (NSString*)googlePlusClientId {
+    return @"";
+}
 
-// Read It Later - http://readitlaterlist.com/api/signup/ 
+// Read It Later - http://readitlaterlist.com/api/signup/
 - (NSString*)readItLaterKey {
 	return @"";
 }
@@ -368,6 +377,7 @@
 - (NSNumber*)readabilityUseXAuth {
 	return [NSNumber numberWithInt:1];
 }
+
 // Foursquare V2 - https://developer.foursquare.com
 - (NSString*)foursquareV2ClientId {
     return @"";
@@ -375,6 +385,47 @@
 
 - (NSString*)foursquareV2RedirectURI {
     return @"";
+}
+
+// Tumblr - http://www.tumblr.com/docs/en/api/v2
+- (NSString*)tumblrConsumerKey {
+	return @"";
+}
+
+- (NSString*)tumblrSecret {
+	return @"";
+}
+
+//you can put whatever here. It must be the same you entered in tumblr app registration, eg tumblr.sharekit.com
+- (NSString*)tumblrCallbackUrl {
+	return @"";
+}
+
+// Hatena - https://www.hatena.com/yours12345/config/auth/develop
+- (NSString*)hatenaConsumerKey {
+	return @"";
+}
+
+- (NSString*)hatenaSecret {
+	return @"";
+}
+
+//required permissions. You do not need change these - but it must correspond with what you set during app registration on Hatena.
+- (NSString *)hatenaScope {
+    return @"write_public,read_public";
+}
+
+// Plurk - http://www.plurk.com/API
+- (NSString *)plurkAppKey {
+  return @"";
+}
+
+- (NSString *)plurkAppSecret {
+  return @"";
+}
+
+- (NSString *)plurkCallbackURL {
+  return @"";
 }
 
 /*
@@ -406,7 +457,7 @@
 	return @"UIModalPresentationFormSheet";// See: http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIViewController_Class/Reference/Reference.html#//apple_ref/occ/instp/UIViewController/modalPresentationStyle
 }
 
-- (NSString*)modalTransitionStyle {
+- (NSString*)modalTransitionStyleForController:(UIViewController *)controller {
 	return @"UIModalTransitionStyleCoverVertical";// See: http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIViewController_Class/Reference/Reference.html#//apple_ref/occ/instp/UIViewController/modalTransitionStyle
 }
 // ShareMenu Ordering
@@ -442,8 +493,19 @@
 - (NSArray*)defaultFavoriteTextSharers {
     return [NSArray arrayWithObjects:@"SHKMail",@"SHKTwitter",@"SHKFacebook", nil];
 }
-- (NSArray*)defaultFavoriteFileSharers {
-    return [NSArray arrayWithObjects:@"SHKMail",@"SHKEvernote", nil];
+
+//ShareKit will remember last used sharers for each particular mime type.
+- (NSArray*)defaultFavoriteSharersForMimeType:(NSString *)mimeType {
+    
+    NSMutableArray *result = [NSMutableArray arrayWithObjects:@"SHKMail",@"SHKEvernote", nil];
+    if ([mimeType hasPrefix:@"video/"] || [mimeType hasPrefix:@"audio/"] || [mimeType hasPrefix:@"image/"]) {
+        [result addObject:@"SHKTumblr"];
+    }
+    return result;
+}
+
+- (NSArray *)defaultFavoriteFileSharers {
+    return [self defaultFavoriteSharersForMimeType:nil];
 }
 
 //by default, user can see last used sharer on top of the SHKActionSheet. You can switch this off here, so that user is always presented the same sharers for each SHKShareType.
@@ -479,6 +541,13 @@
  ----------------------
  These settings can be left as is.  This only need to be changed for uber custom installs.
  */
+
+
+/* cocoaPods can not build ShareKit.bundle resource target. This switches ShareKit to use resources directly. If someone knows how to build a resource target with cocoapods, please submit a pull request, so we can get rid of languages ShareKit.bundle and put languages directly to resource target */
+- (NSNumber *)isUsingCocoaPods {
+    return [NSNumber numberWithBool:NO];
+}
+
 - (NSNumber*)maxFavCount {
 	return [NSNumber numberWithInt:3];
 }
