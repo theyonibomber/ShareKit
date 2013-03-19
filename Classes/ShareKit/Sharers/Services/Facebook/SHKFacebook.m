@@ -271,8 +271,10 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 
 - (void)promptAuthorization
 {
-	[self saveItemForLater:SHKPendingShare];
-	
+    if (self.item.shareType != SHKShareTypeUndefined) {
+        [self saveItemForLater:SHKPendingShare];
+    }
+
 	NSAssert(authingSHKFacebook == nil, @"ShareKit: auth loop logic error - will lead to leaks");
 	authingSHKFacebook = self;
 	[self retain];
@@ -293,7 +295,7 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 
 - (void)share {
     
-    if ([self socialFrameworkAvailable]) {
+    if ([self socialFrameworkAvailable] && self.item.shareType != SHKShareTypeUserInfo) {
         
         SHKSharer *iosSharer = [SHKiOSFacebook shareItem:self.item];
         iosSharer.quiet = self.quiet;
