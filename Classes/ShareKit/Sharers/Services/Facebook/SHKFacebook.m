@@ -243,11 +243,6 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 	return YES;
 }
 
-+ (BOOL)canShareVideo
-{
-	return YES;
-}
-
 + (BOOL)canShareOffline
 {
 	return NO; // TODO - would love to make this work
@@ -347,7 +342,6 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 	if ((self.item.shareType == SHKShareTypeURL && self.item.URL)||
 		(self.item.shareType == SHKShareTypeText && self.item.text)||
 		(self.item.shareType == SHKShareTypeImage && self.item.image)||
-		self.item.shareType == SHKShareTypeVideo ||
 		self.item.shareType == SHKShareTypeUserInfo)	{ //demo app doesn't use this, handy if you wish to get logged in user info (e.g. username) from oauth services, for more info see https://github.com/ShareKit/ShareKit/wiki/FAQ
         
 		// Ask for publish_actions permissions in context
@@ -464,22 +458,6 @@ static SHKFacebook *requestingPermisSHKFacebook=nil;
 		FBRequestConnection* con = [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
 			[self FBUserInfoRequestHandlerCallback:connection result:result error:error];
 		}];
-		[self.pendingConnections addObject:con];
-	}
-	else if (self.item.shareType == SHKShareTypeVideo)
-	{
-		if (self.item.title)
-			[params setObject:self.item.title forKey:@"title"];
-		if (self.item.text)
-			[params setObject:self.item.text forKey:@"description"];
-		[params setObject:self.item.data forKey:self.item.filename];
-		[params setObject:self.item.mimeType forKey:@"contentType"];
-		
-		FBRequestConnection* con = [FBRequestConnection startWithGraphPath:@"me/videos"
-															    parameters:params
-															    HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-																    [self FBRequestHandlerCallback:connection result:result error:error];
-																}];
 		[self.pendingConnections addObject:con];
 	}
     [self sendDidStart];
